@@ -1,0 +1,44 @@
+<script>
+	
+	/*
+		[개념] 시간 계산
+			1시간 = 60분 = 3600초(60분 * 60초)
+			1분   = 60초
+			1초
+	*/
+	/*
+		[문제1]
+			4000초를 시간만 출력하시오.		  
+			4000초를 시간을 제외하고 분만 출력하시오.
+			4000초를 시간을 제외하고 초만 출력하시오.
+	*/		
+
+	let a = 4000;
+    let a1 = parseInt(4000/3600);
+    let a2 = parseInt(4000%3600/60);
+    let a3 = a%60;
+
+    document.write(a1, "<br/>");
+    document.write(a2, "<br/>");
+    document.write(a3, "<br/>");
+
+
+
+	/*
+		[문제2]
+			123123초를 시간만 출력하시오.		  
+			123123초를 시간을 제외하고 분만 출력하시오.
+			123123초를 시간을 제외하고 초만 출력하시오.
+	*/
+	
+    let b = 123123;
+    let b1 = parseInt(b/3600);
+    let b2 = parseInt(b%3600/60);
+    let b3 = b%60;
+
+    document.write(b1, "<br/>");
+    document.write(b2, "<br/>");
+    document.write(b3, "<br/>");
+    
+
+</script>
