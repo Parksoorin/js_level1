@@ -1,0 +1,22 @@
+<script>
+
+    /*
+		[문제] 
+			321321초를 시간을 제외한 "분"과,  
+			시간과 분을 제외한 "초"를 구한 후,	
+			"분"이 "초" 보다 크다.
+			위 내용을 비교연산자로 표현하시오.
+		[정답]
+			15
+			21
+			false		
+    */
+
+    let a = parseInt(321321 % 3600 / 60);
+    let b = 321321 % 60;
+
+    document.write(a, "<br>");
+    document.write(b, "<br>");
+    document.write(a>b, "<br>");
+
+</script>
