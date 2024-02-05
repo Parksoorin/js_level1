@@ -1,0 +1,52 @@
+<script>
+
+    /*
+        [문제]
+            [1] 랜덤(10~99)숫자 3개를 저장한다.
+            [2] 각각의 숫자의 자리수의 합을 구한다.
+            [3] 자리수의 합이 가장큰수를 출력한다.
+            
+        [예시]
+            11 18 32 
+        [설명] 
+            1 , 1 의합은 2  
+            1 , 8 의합은 9 
+            3 , 2 안합은 5 
+            세값중에서 9가 가장크다. 여기서 9를 출력하면안되고 18을 출력한다.
+        
+            [정답]
+            18
+    */
+
+    let a = parseInt(Math.random() * 90) + 10;
+    let b = parseInt(Math.random() * 90) + 10;
+    let c = parseInt(Math.random() * 90) + 10;
+  
+    let a1 = parseInt(a / 10);
+    let a2 = a % 10;
+
+    let b1 = parseInt(b / 10);
+    let b2 = b % 10;
+
+    let c1 = parseInt(c / 10);
+    let c2 = c % 10;
+
+    let a3 = a1 + a2;
+    let b3 = b1 + b2;
+    let c3 = c1 + c2;
+
+    let max = a3;
+    let maxNumber = a; // 여기가 키포인트이다.
+
+    if(max < b3){
+        max = b3;
+        maxNumber = b;
+    }
+    if(max < c3){
+        max = c3;
+        maxNumber = c;
+    }
+
+    document.write(a + " " + b + " " + c + " " + maxNumber);
+
+</script>

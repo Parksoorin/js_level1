@@ -1,0 +1,44 @@
+<script>
+
+	/*
+		[문제]	  
+			철수는 최근 무인도를 구입하고, 그 나라의 왕이 되었다.
+			평소 월요병이 있던 철수는 일주일에서 월요일을 삭제하였다.
+			만약 이번 달 1일이 일요일일 때, 랜덤으로 1~31을 저장하고,
+			해당 날짜의 요일을 출력하시오.
+		
+			[예]
+				1 : 일요일
+				2 : 화요일
+				3 : 수요일
+				4 : 목요일
+				5 : 금요일
+				6 : 토요일
+				7 : 일요일 
+				8 : 화요일 
+				...
+	*/
+
+    let day = parseInt(Math.random() * 31) + 1;     // [0 ~ 30] + 1
+    document.write("day = " + day + "<br>");
+    
+    if(day % 6 == 1){
+        document.write("일요일");
+    }
+    if(day % 6 == 2){
+        document.write("화요일");
+    }
+    if(day % 6 == 3){
+        document.write("수요일");
+    }
+    if(day % 6 == 4){
+        document.write("목요일");
+    }
+    if(day % 6 == 5){
+        document.write("금요일");
+    }
+    if(day % 6 == 0){
+        document.write("토요일");
+    }
+
+</script>

@@ -1,0 +1,36 @@
+<script>
+
+	/*
+        [문제]
+            랜덤 1~2000 사이의 숫자를 저장하고, 다음과 같이 출력하시오.
+        
+            랜덤 숫자가
+            1   ~ 10    사이 값이면, 1
+            11  ~ 20    사이 값이면, 2
+            21  ~ 30    사이 값이면, 3
+            
+            ...
+            
+            101 ~ 110은 사이 값이면, 11
+            
+            ...
+            
+            1001 ~ 1010 사이 값이면, 101
+	*/
+
+    let a = parseInt(Math.random()*2000) + 1;
+    document.write("a : ", a, "<br>");
+    
+    let b = parseInt(a / 10);
+    let result = 0;
+
+    if (a % 10 == 0){
+        result = b;
+    }
+    if (a % 10 > 0){
+        result = b + 1;
+    }
+
+    document.write(result);
+
+</script>

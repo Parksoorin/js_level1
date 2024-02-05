@@ -1,0 +1,33 @@
+<script>
+
+	/*
+		[문제]
+			1부터 100 사이의 랜덤 숫자를 변수 a에 저장한다.
+			a의 값이 1부터  5   사이이면,  num에 1을  저장한 후 출력하시오.
+			a의 값이 6부터  10  사이이면,  num에 6을  저장한 후 출력하시오.
+			a의 값이 11부터 15  사이이면,  num에 11을 저장한 후 출력하시오.
+			a의 값이 16부터 20  사이이면,  num에 16을 저장한 후 출력하시오.
+			...
+			...
+			a의 값이 96부터 100 사이이면,  num에 96을 저장한 후 출력하시오.
+	*/
+
+	let a = parseInt(Math.random() * 100) + 1;	// [0 ~ 99] + 1
+	console.log(a);
+	document.write("a = ", a + "<br>");
+
+	let unit = parseInt(a / 5);
+    document.write("unit = ", unit + "<br>");
+
+	if(a % 5 == 0) {
+		unit = unit - 1;
+	}
+    document.write("unit2 = ", unit + "<br>");
+
+	unit = unit * 5 + 1;
+    document.write("unit3 = ", unit + "<br>");
+
+	console.log(unit);
+	document.write(unit);
+
+</script>
