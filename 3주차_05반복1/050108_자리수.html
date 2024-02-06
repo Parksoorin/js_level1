@@ -1,0 +1,27 @@
+<script>
+
+    /*
+        [문제]
+            1 ~ 2000 사이의 랜덤숫자를 저장하고, 
+            자리수가 얼마인지 출력하시오.
+        [예시]
+            969
+            3자리 수    
+    */
+    let num = Math.floor(Math.random() * 2000) + 1;
+    document.write(num + "<br>");
+
+    // temporary : 임시의
+    let temp = num;
+    let count = 0;
+    let run = true;
+    while(run) {
+        temp = parseInt(temp / 10);
+        count += 1;
+        if(temp == 0) {
+            run = false;
+        }
+    }
+    document.write(num + "의 자리수는 " + count);
+
+</script>

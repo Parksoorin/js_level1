@@ -1,0 +1,21 @@
+<script>
+
+    /*
+        [문제]
+            90과 45의 공약수를 출력하시오.
+        [정답]
+            1 3 5 9 15 45
+    */
+
+    let x = 90;
+    let y = 45;
+    let i = 1;
+    while(i <= y) {
+        if(x % i == 0 && y % i == 0) {
+            console.log(i);
+            document.write(i + "&nbsp;");
+        } 
+        i += 1;
+    }
+
+</script>

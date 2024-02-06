@@ -1,0 +1,21 @@
+<script>
+
+    /*
+        [문제]
+            철수는 13살 철수의 아버지는 45살이다. 
+            몇 년 후 철수의 아버지는 철수 나이의 3배가 될지 구하시오.
+        [정답]
+            3    
+    */
+
+    let a = 13, b = 45, i = 0;
+
+    let run = true;
+    while(run){
+        if((a + i)*3 == b + i){
+            document.write(i);
+            run = false;
+        }else i++;
+    }
+
+</script>

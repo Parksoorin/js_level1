@@ -1,0 +1,21 @@
+<script>
+
+    /*
+        [문제] 
+            45와 60, 75의 최대공약수를 구하시오.
+        [정답]
+            15    
+    */
+
+    let a = 45, b = 60, c = 75, i = 1, result = 0;
+
+    while(i <= a){
+        if(a % i == 0 && b % i == 0 && c % i == 0){
+            result = i;
+        }
+        i++;
+    }
+
+    document.write(result);
+
+</script>

@@ -1,0 +1,29 @@
+<script>
+
+    /*
+        [최대공약수]
+            이름에 최대가 붙어서 매우헷갈린다. 특히 최소공배수와 함께 사용하면 더 하다.
+            마지막 공약수 라고 하면 이해하기 쉽다. 
+        [문제]
+            90과 45의 최대공약수를 출력하시오.
+        [출력]
+            45    
+    */
+
+    let x = 90;
+    let y = 45;
+
+    let answer = 0;
+
+    let i = 1;
+    while(i <= y) {
+        if(x % i == 0 && y % i == 0) {
+            answer = i;
+        }
+        i += 1;
+    }
+
+    console.log(answer);
+    document.write(answer);
+
+</script>

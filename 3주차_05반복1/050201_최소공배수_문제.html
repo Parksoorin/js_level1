@@ -1,0 +1,22 @@
+<script>
+
+    /*
+        [문제] 
+            45와 60, 75의 최소공배수를 구하시오.
+        [정답]
+            900    
+    */
+   
+    let a = 45, b = 60, c = 75, i = 75;
+
+    let run = true;
+
+    while(run){
+        if(i % a == 0 && i % b == 0 && i % c == 0){
+            document.write(i);
+            run = false;
+        }
+        i++;
+    }
+
+</script>

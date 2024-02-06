@@ -1,0 +1,27 @@
+<script>
+
+    /*
+        [문제]
+            12와 15의 공배수를 작은 것부터 
+            순서대로 5개만 출력하시오.
+        [정답]
+            60 120 180 240 300     
+    */
+
+    let a = 12, b = 15, count = 0, i = 1;
+    let run = true;
+
+    while(run){
+        if(i % a == 0 && i % b == 0){
+            document.write(i, " ");
+            count += 1;
+        }
+        if(count == 5){
+            run = false;
+        }
+        i++;
+    }
+
+
+
+</script>
