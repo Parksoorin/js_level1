@@ -1,0 +1,37 @@
+<script>
+
+    /*
+        [문제]
+            철수는 게임을 만든다.
+            배열에 0은 이동가능한 지역이고,
+            1은 플레이어이다.
+            2는 벽이라 이동이 불가능하다.
+
+            플레이어는 오른쪽으로 한칸씩 이동한다.
+            계속 반복을 하다가 플레이어가 벽에 부딪히면 종료하도록만들어보세요.
+
+        [정답]
+            1,0,0,0,0,0,2
+            0,1,0,0,0,0,2
+            0,0,1,0,0,0,2
+            0,0,0,1,0,0,2
+            0,0,0,0,1,0,2
+            0,0,0,0,0,1,2
+    */
+
+    let arr = [1,0,0,0,0,0,2];
+    let player = 0; 
+    while(true){
+        document.write(arr);
+        document.write("<br/>");
+        if(arr[player + 1] == 2){
+            break;
+        }else if(arr[player + 1] == 0){
+            let temp = arr[player];
+            arr[player] = arr[player + 1];
+            arr[player + 1] = temp;
+            player += 1;
+        }
+    }
+   
+</script>
