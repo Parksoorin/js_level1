@@ -1,0 +1,32 @@
+<script>
+
+    /*
+        [문제]
+            arr배열에 1~4 사이의 랜덤 숫자 4개를 저장한다. 
+            단, 중복없는 숫자로 저장한다.
+        [예시]
+            arr = 1,4,2,3
+    */
+
+    let arr   = [    0,     0,     0,     0];
+    let check = [false, false, false, false];
+
+    let count = 0;
+    while(true) {
+        let index = Math.floor(Math.random() * arr.length);
+
+        if(check[index] == false) {
+            check[index] = true;
+            arr[count] = index + 1;
+
+            count += 1;
+        }
+
+        if(count == 4) {
+            break;
+        }
+    }
+
+    document.write("arr = " + arr);
+
+</script>

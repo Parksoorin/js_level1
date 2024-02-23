@@ -1,0 +1,30 @@
+<script>
+    /*
+        [문제]
+            arr배열이 대칭인지 구하시오.
+            대칭이면 true를 출력 아니면 false 출력하시오.
+            대치이란 배열을 반으로 잘라서 마주보게 붙였을대,
+            값이 전부 같으면 대칭이다.
+        [예시]	
+            [1,5,4,4,5,1] true
+            [1,5,4,3,5,1] false    
+        [정답]
+            true
+    */
+
+    let arr = [1, 5, 4, 4, 5, 1];
+    let cnt = arr.length / 2;
+
+    for(let i = 0; i < arr.length / 2; i++){
+        if(arr[i] == arr[arr.length - i]){
+            cnt++;
+        }
+    }
+
+    if(cnt == 3){
+        document.write("true");
+    } else {
+        document.write("false");
+    }
+    
+</script>

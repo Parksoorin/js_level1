@@ -1,0 +1,32 @@
+<script>
+
+    /*
+        [문제]  
+            arr배열이 있을 때, 배열 사이에 값을 추가하고 
+            나머지 값들은 뒤로 밀어내는 것을 삽입이라고 한다. 
+            0~5 사이의 랜덤 숫자(=위치)를 저장하고,
+            arr배열 사이의 그 위치에 값 100을 삽입해 보시오.
+        [예시]
+            r = 3   
+            arr = 10,34,56,100,8,43    
+    */
+
+    let value = 100;
+    let arr = [10, 34, 56, 8, 43];
+
+    let r = Math.floor(Math.random() * 6);
+    document.write("r = " + r + "<br>");
+
+    if(r == arr.length) {
+        arr.push(value);
+    } else {
+        arr.push(0);        // 10, 34, 56, 8, 43, 0
+    
+        for(let i=arr.length - 1; i>r; i--) {
+            arr[i] = arr[i - 1];
+        }
+        arr[r] = value;
+    }
+    document.write("arr = " + arr);
+
+</script>
