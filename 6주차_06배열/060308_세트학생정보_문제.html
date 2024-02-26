@@ -1,0 +1,61 @@
+<script>
+
+    /*
+        [문제]
+            아래 arr배열은 3명의 학생 데이터이다.		
+            각 학생은 3개씩 데이터로 표현한다. 
+            맨 앞은 번호, 그 다음은 국어점수, 그 다음은 수학점수이다.					
+            1001번, 국어 100, 수학 20
+            1002번, 국어 32,  수학 54
+            1003번  국어 34,  수학 65	
+
+            [1] 전체 평균을 출력하시오. (소수점 두자리까지 출력)
+            [2] 국어 1등 학생 정보를 출력하시오.
+            [3] 수학 1등 학생 정보를 출력하시오.
+            [4] 전체 1등 학생 정보를 출력하시오.
+        [정답]    
+            평균 = 101.67점
+            국어 1등 = 1001번(100점)
+            수학 1등 = 1003번(65점)
+            전체 1등 = 1001번(120점)      
+    */
+
+    let arr = [1001, 100, 20, 1002, 32, 54, 1003, 34, 65];
+    let total = 0;
+
+    let maxKorScore = 0;
+    let maxKorIndex = 0;
+
+    let maxMathScore = 0;
+    let maxMathIndex = 0;
+
+    let maxScore = 0;
+    let maxIndex = 0;
+    for(let i=0; i<arr.length; i++) {
+        if(i % 3 == 0) {
+            let sum = arr[i + 1] + arr[i + 2]; 
+            total += sum;
+            if(maxScore < sum) {
+                maxScore = sum;
+                maxIndex = i;
+            }
+            if(maxKorScore < arr[i + 1]) {
+                maxKorScore = arr[i + 1];
+                maxKorIndex = i;
+            }
+            if(maxMathScore < arr[i + 2]) {
+                maxMathScore = arr[i + 2];
+                maxMathIndex = i;
+            }
+        }
+    }
+
+    let count = parseInt(arr.length / 3);
+    let avg = (total / count).toFixed(2);
+    document.write("평균 = " + avg + "점<br>");
+
+    document.write("국어 1등 = " + arr[maxKorIndex] + "번(" + maxKorScore + "점)<br>");
+    document.write("수학 1등 = " + arr[maxMathIndex] + "번(" + maxMathScore + "점)<br>");
+    document.write("전교 1등 = " + arr[maxIndex] + "번(" + maxScore + "점)<br>");
+
+</script>

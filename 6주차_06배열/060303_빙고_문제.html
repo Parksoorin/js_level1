@@ -1,0 +1,39 @@
+<script>
+
+    /*
+        [문제]
+            아래 arr배열은 3 x 3의 빙고 판을 표현한 것이다.
+            1이 연속으로 3개이면, 빙고이다.
+            즉 아래 빙고 판은 빙고가 2개이다.
+            판정을 통해 빙고가 2개가 나오도록 식을 작성하시오.   
+    */
+
+    let arr = [ 0, 0, 1,
+                0, 1, 1,
+                1, 0, 1];
+
+    let count = 0;
+
+    for(let i = 0; i < arr.length; i += 3){
+        if(arr[i] == 1 && arr[i+1] == 1 && arr[i+2] == 1){
+            count++;
+        }
+    }
+
+    for(let i = 0; i < 3; i++){
+        if(arr[i] == 1 && arr[i+3] == 1 && arr[i+6] == 1){
+            count++;
+        }
+    }
+
+    if(arr[0] == 1 && arr[4] == 1 && arr[8] == 1){
+        count++;
+    }
+
+    if(arr[2] == 1 && arr[4] == 1 && arr[6] == 1){
+        count++;
+    }
+
+    document.write(count);
+
+</script>

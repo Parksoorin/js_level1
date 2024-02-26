@@ -1,0 +1,28 @@
+<script>
+
+    /*
+        [문제]
+            arr배열은 학생 번호와 점수가 한 세트를 이루고 있다.
+            점수 총합과 평균을 출력하시오.
+        [정답]
+            총점 = 235
+            평균 = 58.75    
+    */
+
+    let arr = [1001, 40, 1002, 60, 1003, 65, 1004, 70];
+
+    let total = 0;
+    let avg = 0;
+    for(let i=0; i<arr.length; i++) {
+        if(i % 2 == 1) {
+            total += arr[i];
+        }
+    }
+
+    let count = parseInt(arr.length / 2);
+    avg = total / count;
+
+    document.write("총점 = " + total + "<br>");
+    document.write("평균 = " + avg);
+
+</script>

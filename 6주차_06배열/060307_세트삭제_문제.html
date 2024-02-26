@@ -1,0 +1,31 @@
+<script>
+
+    /*
+        [문제]
+            arr배열은 학생 번호와 점수 한 세트를 이루고 있다.		
+            0~7 사이의 랜덤 숫자를 저장하고,
+            해당 위치의 학생 번호와 그 점수를 삭제하시오.
+        [예시1]    
+            r = 3
+            arr = 1001,40,1003,65,1004,70        
+        [예시2]
+            r = 4
+            arr = 1001,40,1002,82,1004,70        
+    */
+
+    let arr = [1001, 40, 1002, 82, 1003, 65, 1004, 70];
+
+    let r = Math.floor(Math.random() * 8);
+    document.write("r = " + r + "<br>");
+
+    if(r % 2 == 0) {
+        arr.splice(r, 1);
+        arr.splice(r, 1);
+    } else {
+        arr.splice(r, 1);
+        arr.splice(r - 1, 1);
+    }
+
+    document.write("arr = " + arr);
+
+</script>
