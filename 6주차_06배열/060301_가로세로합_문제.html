@@ -1,0 +1,31 @@
+<script>
+
+    /*
+        [문제]	
+            배열a는 한 줄 이지만 아래와 같이 사각형으로 놓였다고 했을 때,  
+            [1] a배열의 가로 합은 garo배열에 저장하시오.
+            [2] a배열의 세로 합은 sero배열에 저장하시오.
+        [정답]
+            garo = 10, 26, 42
+            sero = 15, 18, 21, 24
+    */
+
+    let a = [1,  2, 3, 4,
+             5,  6, 7, 8,
+             9, 10,11,12];
+
+    let garo = [0, 0, 0];
+    let sero = [0, 0, 0, 0];
+
+    for(let i=0; i<a.length; i++) {
+        garo[parseInt(i / 4)] += a[i];
+    }
+    document.write(garo + "<br>");
+    
+   
+    for(let i=0; i<a.length; i++) {
+        sero[i % 4] += a[i];
+    }
+    document.write(sero + "<br>");
+
+</script>
