@@ -1,0 +1,48 @@
+<script>
+
+    /*
+        [문제]  
+            아래 arr배열은 순서대로 값이 저장되어있다.
+            1~70사이의 랜덤숫자 하나를 저장 후,
+            arr배열의 값들 사이에 저장하려고 한다. 
+            저장 조건은 arr배열의 바로 앞의 값 보다는 크고 
+            바로 뒤의 값 보다는 이하인 위치에 삽입 후 출력하시오.
+        [예시1]
+            r = 5
+            arr = 5,10,20,30,40,50,60   
+        [예시2]
+            r = 15
+            arr = 10,15,20,30,40,50,60       
+        [예시3]
+            r = 65
+            arr = 10,20,30,40,50,60,65                     
+    */
+
+    let arr = [10, 20, 30, 40, 50, 60];
+    let ran = parseInt(Math.random()*70) + 1;
+    document.write(ran, "<br>");
+
+    let index = 0;
+    if(r <= arr[0]) {
+        index = 0;
+    } else if(r >= arr[arr.length - 1]) {
+        index = arr.length;
+    } else {
+        for(let i=0; i<arr.length - 1; i++) {
+            if(arr[i] <= r && r <= arr[i + 1]) {
+                index = i + 1;
+                break;
+            }
+        }
+    }
+
+    document.write("index = " + index + "<br>");
+    arr.push(0);
+
+    for(let i=arr.length - 1; i>index; i--) {
+        arr[i] = arr[i - 1];
+    }
+    arr[index] = r;
+    document.write("arr = " + arr);
+
+</script>

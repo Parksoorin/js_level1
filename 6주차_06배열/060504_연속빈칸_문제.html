@@ -1,0 +1,45 @@
+<script>
+
+    /*
+        [문제]
+            철수네 공장의 창고를 아래 arr배열로 표현하였다.
+            1은 물건이 차 있는 상황이고 0은 비어있는 상황이다.
+            랜덤(1~5)으로 물건 크기를 입력받고 창고에 저장 후 출력하시오.
+            저장할 수 없으면 "창고 부족"이라고 출력하시오.
+            예를 들어 랜덤이 3이 나오면 연속으로 0이 3개 있어야 한다.
+        [예시1]
+            r = 3
+            arr = [0, 1, 0, 0, 1, 1, 1, 1, 0, 1]
+        [예시2]
+            r = 5
+            "창고부족"    
+    */
+
+    let arr = [0, 1, 0, 0, 1, 0, 0, 0, 0, 1];
+    let cnt = 0;
+    let index = -1;
+    let ran = parseInt(Math.random()*5)+1;
+    document.write(ran, "<br>");
+
+    for(let i = 0; i < arr.length; i++){
+        if(arr[i] == 0){
+            cnt++;
+            if(cnt == ran){
+                index = i;
+                break;
+            }
+        } else {
+            cnt = 0;
+        }
+    }
+
+    if(index >= 0) {
+        for(let i=0; i<ran; i++) {
+            arr[index - i] = 1;
+        }
+        document.write("arr = " + arr);
+    } else {
+        document.write("창고부족");
+    }
+    
+</script>

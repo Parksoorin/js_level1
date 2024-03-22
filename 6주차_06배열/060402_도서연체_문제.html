@@ -1,0 +1,35 @@
+<script>
+
+    /*
+        [문제]
+            철수는 도서관에서 책을 한 권 빌렸다. 
+            빌린 날짜는 2022년 2월 25일이고, 대여 일수는 10일이다. 
+            도서가 연체되면 연체 비용은 하루에 100원이다.
+            오늘은 2022년 3월 10일 이라고 할 때, 
+            지급해야 하는 비용은 얼마인지 구하시오.
+            단, 윤년은 계산하지 않는다.
+        [정답]
+            300원    
+    */
+
+    let monthList = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let total = 0;
+    let total2 = 0;
+
+    for(let i = 0; i < 2 - 1; i++){
+        total += monthList[i];
+    }
+    total += 25;
+    document.write(total, "<br>");
+
+    for(let i = 0; i < 3 - 1; i++){
+        total2 += monthList[i];
+    }
+    total2 += 10;
+    document.write(total2, "<br>");
+
+    let result = total2 - total - 10;
+
+    document.write(result * 100, "원");
+
+</script>

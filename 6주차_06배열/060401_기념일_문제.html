@@ -1,0 +1,39 @@
+<script>
+
+    /*
+        [문제]	
+            철수와 영희는 3월 3일에 만났다. 		
+            철수는 영희와 100일 기념일에 축하 파티를 하려 한다.
+            만난 지 100일 뒤는 몇 월 며칠인지 구하시오.
+            단, 윤년은 계산하지 않으며, 시작일은 포함시키지 않는다.
+        [정답]
+            6월 11일
+    */
+
+    let monthList = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let month = 3;
+    let day = 3;
+
+    let total = 0;
+    for(let i=0; i<month - 1; i++) {
+        total += monthList[i];
+    }
+    total += day;  // 1월 1일부터 3월 3일까지의 날짜 저장(62일)
+    document.write(total + "<br>");
+    total += 100;  // 100일 더하기(162일)
+    document.write(total + "<br>");
+
+    let start = 0;  // 월
+    let end = 0;    // 일
+    for(let i=0; i<monthList.length; i++) {
+        end = total;  // 162 저장
+        total -= monthList[i];  // 한달이 지날때마다 빼기
+        if(total < 0) {
+            start = i + 1;  // 몇월인지 저장
+            break;  // 0보다 작아지면 멈춘다.
+        }
+    }
+
+    document.write(start + "월 " + end + "일");
+
+</script>
