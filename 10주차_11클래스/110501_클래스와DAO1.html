@@ -1,0 +1,78 @@
+<script>
+
+    /*
+        [1] 대부분의 클래스는 보통 데이터를 담당하는 클래스와 
+            그 데이터를 배열로 관리하는 DAO 클래스 두개가 세트로 작용한다. 
+            아래 student 배열이 있다고할때, 
+            (1) student = [] 이부분이 dao 로 변경되고, 
+            (2) {"num" : 1001, "name" : "김철수"}, 이 부분이 각각의 데이터롤 변경된다.
+
+            즉, 데이터와 배열을 따로 관리한다. 
+        [2] 
+            let student = [
+                {"num" : 1001, "name" : "김철수"},
+                {"num" : 1002, "name" : "이영희"},
+                {"num" : 1003, "name" : "송승헌"},
+            ];
+                
+    */
+    class Student{
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+
+        setData(num, name, kor, math) {
+            this.num = num;
+            this.name = name;
+            this.kor = kor;
+            this.math = math;
+        };
+
+        printData(){
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br/>");
+        }
+    }
+
+    class StudentDAO{
+        // 위데이터의 배열을 가지고있다. 
+        studentList = [];
+
+        printStList(){
+            for(let i = 0; i < this.studentList.length; i++){
+                this.studentList[i].printData();
+            }
+        }
+
+        insertData(data){
+            this.studentList.push(data);
+        }
+
+        deleteData(number){
+            for(let i = 0; i < this.studentList.length; i++){
+                if(this.studentList[i].num == number){
+                    this.studentList.splice(i , 1);
+                }
+            }
+        }
+    }
+    let studentDAO = new StudentDAO();
+
+    let st1 = new Student();
+    st1.setData(1001 , '김철수' , 20 , 40);
+    studentDAO.insertData(st1);
+    st1 = new Student();
+    st1.setData(1002 , '이민정' , 10 , 60);
+    studentDAO.insertData(st1);
+    st1 = new Student();
+    st1.setData(1003 , '조주연' , 80 , 10);
+    studentDAO.insertData(st1);
+    st1 = new Student();
+    st1.setData(1004 , '송민정' , 50 , 40);
+    studentDAO.insertData(st1);
+
+    studentDAO.printStList();
+    document.write("<hr/>");
+    studentDAO.deleteData(1003);
+    studentDAO.printStList();
+</script>

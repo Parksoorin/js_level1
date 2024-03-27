@@ -1,0 +1,84 @@
+<script>
+
+    /*
+        [문제]
+            member는 회원목록이다. 번호와 아이디가 기록되어있다.
+            item은 쇼핑몰 판매상품이다. 상품이름과 가격이 기록되어있다.
+            
+            order는 오늘 주문 목록이다. 
+            주문한회원아이디와 아이템이름 그리고, 주문개수가 기록되어있다. 
+            오늘의 매출을 출력하시오.
+            
+            Member 클래스와 Item 클래스, Order클래스를 만들고,
+            문자열을 잘라 각각의 클래스에 저장 후 문제를 푸시오.
+        [정답]
+            33200    
+    */
+
+    class Member {
+        num = 0;
+        id = "";
+    }
+
+    class Item {
+        name = "";
+        price = 0;
+    }
+
+    class Order {
+        id = "";
+        name = "";
+        count = 0;
+    }
+
+    let memberData = "1001,qwer1234/1002,pythongood/1003,testid";
+    let itemData = "사과,1100/바나나,2000/딸기,4300";
+    let orderData = "qwer1234,사과,3/phthongood,바나나,2/qwer1234,딸기,5/testid,사과,4";
+
+    let memberList = [];
+    let itemList = [];
+    let orderList = [];
+
+    let token = memberData.split("/");
+    for(let i=0; i<token.length; i++) {
+        let temp = token[i].split(",");
+        let member = new Member();
+        member.num = Number(temp[0]);
+        member.id = temp[1];
+
+        memberList.push(member);
+    }
+
+    token = itemData.split("/");
+    for(let i=0; i<token.length; i++) {
+        let temp = token[i].split(",");
+        let item = new Item();
+        item.name = temp[0];
+        item.price = Number(temp[1]);
+
+        itemList.push(item);
+    }
+
+    token = orderData.split("/");
+    for(let i=0; i<token.length; i++) {
+        let temp = token[i].split(",");
+        let order = new Order();
+        order.id = temp[0];
+        order.name = temp[1];
+        order.count = Number(temp[2]);
+
+        orderList.push(order);
+    }
+
+    // 매출 구하기
+    let total = 0;
+    for(let i=0; i<itemList.length; i++) {
+        for(let j=0; j<orderList.length; j++) {
+            if(itemList[i].name == orderList[j].name) {
+                total += orderList[j].count * itemList[i].price;
+            }
+        }
+    }
+    document.write(total);
+
+</script>

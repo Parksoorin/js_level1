@@ -1,0 +1,46 @@
+<script>
+
+    class Test {
+
+        ex01(list) {
+            /* 직접 구현하시오. */
+            let count = 0;
+            for(let i=0; i<list.length; i++) {
+                if(list[i] % 4 == 0) {
+                    count += 1;
+                }
+            }
+            return count;
+        }
+
+        ex02(list) {
+            /* 직접 구현하시오. */
+            let result = [];
+            for(let i=0; i<list.length; i++) {
+                if(list[i] % 4 == 0) {
+                    result.push(list[i]);
+                }
+            }
+            return result;
+        }
+
+    }
+
+    let t = new Test();
+
+    let list = [87, 12, 21, 56, 100];
+    /*
+        [문제1] 4의 배수의 개수를 리턴해주는 메서드를 구현하시오.
+        [정답1] 4의 배수의 개수 = 3
+    */
+    let count = t.ex01(list);
+    document.write("4의 배수의 개수 = " + count + "<br>");
+
+    /*
+        [문제2] 4의 배수만 리스트에 담아 리턴해주는 메서드를 구현하시오.
+        [정답2] 12,56,100
+    */
+    let result = t.ex02(list);
+    document.write(result);
+
+</script>

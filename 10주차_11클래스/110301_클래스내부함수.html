@@ -1,0 +1,56 @@
+<script>
+
+    /*
+        [개념] 클래스 내부 함수
+            [1] 클래스 내부 함수 정의 = 메서드
+                함수명(매개변수) { 내용 }
+                [예시]
+                    setData(num, name, kor, math) {
+                        // 실행할 내용
+                    }
+            [2] 클래스 내부 함수에서는 클래스 내부 변수들도 사용할 수 있다.
+                단, 사용할 때 변수 앞에 this.을 붙여야 한다.
+            [3] 클래스 내부의 함수를 메서드(=인스턴스 함수)라고 부른다.
+    */
+
+    // 클래스 정의
+    class Student {
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+
+        setData(a, b, c, d) {
+            this.num = a;
+            this.name = b;
+            this.kor = c;
+            this.math = d;
+        }
+
+        printData() {
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br>");
+        }
+    }
+
+    // 클래스 생성
+    let st1 = new Student();
+    st1.num = 1001;
+    st1.name = "이만수";
+    st1.kor = 20;
+    st1.math = 50;
+
+    let st2 = new Student();
+    st2.num = 1002;
+    st2.name = "김철수";
+    st2.kor = 40;
+    st2.math = 60;
+
+    /*
+        클래스를 사용하면 전반적으로
+        코드가 정리되어관리할 수 있다.
+    */
+    let st3 = new Student();
+    st3.setData(1003, "오소정", 50, 90);
+    st3.printData();
+
+</script>

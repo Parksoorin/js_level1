@@ -1,0 +1,91 @@
+<script>
+
+    /*
+        [문제] 
+            member는 회원목록이다.
+            item은 쇼핑몰 판매상품이다.
+            order는 오늘 주문목록이다.
+            
+            Member, Item, Order 클래스를 만들고,
+            문자열을 잘라 각각의 클래스에 저장 후
+            회원별 아이템 주문개수를 출력하시오.
+        [정답]
+            이만수: 고래밥 3
+            김철민: 고래밥 1 칸쵸 1
+            이영희: 새우깡 2 칸쵸 1    
+    */
+
+    class Member {
+        memberNum = 0;
+        memberName = "";
+    }
+
+    class Item {
+        itemNum = 0;
+        itemName = "";
+    }
+
+    class Order {
+        memberNum = 0;
+        itemNum = 0;
+    }
+
+    let member  = "3001/이만수,3002/김철민,3003/이영희";
+    let item    = "1001/고래밥,1002/새우깡,1003/칸쵸";
+    let order   = "3001,1001/3001,1001/3003,1002/3002,1003/3001,1001/3003,1002/3003,1003/3002,1001";
+
+    let memberList = [];
+    let itemList = [];
+    let orderList = [];
+
+    let token = member.split(",");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split("/");
+        let member = new Member();
+        member.memberNum = temp[0];
+        member.memberName = temp[1];
+        memberList.push(member);
+    }
+
+    token = item.split(",");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split("/");
+        let item = new Item();
+        item.itemNum = temp[0];
+        item.itemName = temp[1];
+        itemList.push(item);
+    }
+
+    token = order.split("/");
+    for(let i = 0; i < token.length; i++){
+        let temp = token[i].split(",");
+        let order = new Order();
+        order.memberNum = temp[0];
+        order.itemNum = temp[1];
+        orderList.push(order);
+    }
+
+    let resultList = [];
+
+    for(let i = 0; i < memberList.length; i++){
+        let temp = [];
+        temp.push(memberList[i]["memberName"]);
+        for(let j = 0; j < itemList.length; j++){
+            let cnt = 0;
+            for(let k = 0; k < orderList.length; k++){
+                if(memberList[i]["memberNum"] == orderList[k]["memberNum"]){
+                    if(orderList[k]["itemNum"] == itemList[j]["itemNum"]){
+                        cnt++;
+                    }
+                }
+            }
+            temp.push(cnt);
+        }
+        resultList.push(temp);
+    }
+
+    for(let i = 0; i < resultList.length; i++){
+        document.write(resultList[i], "<br>");
+    }
+    
+</script>

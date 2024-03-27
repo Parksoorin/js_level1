@@ -1,0 +1,58 @@
+<script>
+
+    /*
+        [개념] 클래스
+            [1] 클래스는 기존의 json과 함수를 합쳐놓은 것이다.
+                (1) 단순히 두 기능을 합친 것 뿐만 아니라
+                    상속을 이용해서 객체지향 프로그램을 작성할 수 있다.
+                (2) 상속은 추후에 다룬다.
+            [2] 클래스 정의
+                (1) 클래스 정의는 데이터가 생성된 것은 아니고,
+                    생성했을 때의 모양을 미리 정의해놓는 것이다.
+                (2) 추후 똑같은 객체를 여러개 생성하기 위해서 사용된다.
+            [3] 클래스 생성
+                변수 = new 클래스이름();
+                [예시]
+                    let st = new stdent();
+            [4] 클래스 사용
+                객체변수.내부변수
+                [예시]
+                    st.name = "김철수";
+            [5] json과 거의 유사하나
+                미리 정의해놓고 사용한다는 점에서 다르다.
+            [6] 보통 클래스는 json과 마찬가지로
+                배열과 함께 쓰인다.
+            [7] 클래스 내부의 변수들을
+                인스턴스 변수라 부른다.
+    */
+
+    let jsonList = [
+        {"num":1001, "name":"김철수", "kor":100, "math":20},
+        {"num":1002, "name":"이만수", "kor":40, "math":60}
+    ];
+
+    // 클래스 정의
+    class Student {
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+    }
+
+    // 클래스 생성
+    let st1 = new Student();
+    st1.num = 1001;
+    st1.name = "김철수";
+    st1.kor = 100;
+    st1.math = 20;
+
+    let st2 = new Student();
+    st2.num = 1002;
+    st2.name = "이만수";
+    st2.kor = 40;
+    st2.math = 60;   
+    
+    document.write(st1.num + ", " + st1.name + ", " + st1.kor + ", " + st1.math + "<br>");
+    document.write(st2.num + ", " + st2.name + ", " + st2.kor + ", " + st2.math + "<br>");
+
+</script>

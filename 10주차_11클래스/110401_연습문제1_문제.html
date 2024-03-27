@@ -1,0 +1,46 @@
+<script>
+
+    class Test {
+        ex01() {
+            /* 직접 구현하시오. */
+            let total = 0;
+            for(let i=1; i<=5; i++) {
+                total += i;
+            }
+            document.write("1부터 5까지의 합 = " + total + "<br>");
+        }
+
+        ex02() {
+            /* 직접 구현하시오. */
+            let x = Math.floor(Math.random() * 100) + 1;
+            let y = Math.floor(Math.random() * 100) + 1;
+            let z = Math.floor(Math.random() * 100) + 1;
+
+            let max = x;
+            if(max < y){
+                max = y;
+            }
+            if(max < z){
+                max = z;
+            }
+
+            document.write("제일 큰 값 = ", max);
+        }
+    }
+
+    let t = new Test();
+
+    /*
+        [문제1] 1부터 5까지의 합을 출력하는 메서드를 구현하시오.
+        [정답1] 1부터 5까지의 합 = 15
+    */
+    t.ex01();
+
+    /*
+        [문제2] 1부터 100사이의 랜덤 숫자 3개를 저장해 
+                최대값을 출력해주는 메서드를 구현하시오.
+        [예시2] 68, 5, 95 에서 최대값 = 95
+    */
+    t.ex02();
+
+</script>

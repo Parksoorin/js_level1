@@ -1,0 +1,60 @@
+<script>
+
+    /*
+        클래스의 데이터는 단일 데이터이므로 보통 배열과 함께 사용한다. 
+        아래 함수들도 다음단원에서 또 다른 클래스로 구현한다. 
+    */
+
+    class Student {
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+
+        setData(num, name, kor, math) {
+            this.num = num;
+            this.name = name;
+            this.kor = kor;
+            this.math = math;
+        }
+
+        printData() {
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br>");
+        }
+    }
+
+    function parseData(data) {
+
+        let stList = [];
+
+        let token = data.split(",");
+        
+        for(let i=0; i<token.length; i++) {
+
+            let st = new Student();
+
+            let temp = token[i].split("/");
+            let num = temp[0];
+            let name = temp[1];
+            let kor = Number(temp[2]);
+            let math = Number(temp[3]);
+            
+            st.setData(num, name, kor, math);
+
+            stList.push(st);
+        }
+        return stList;
+    }
+
+    function printList(stList) {
+        for(let i=0; i<stList.length; i++) {
+            stList[i].printData();
+        }
+    }
+
+    let data = "1001/김철수/100/20,1002/이영수/90/40,1003/오민수/20/50";
+
+    let stList = parseData(data);
+    printList(stList);
+
+</script>
