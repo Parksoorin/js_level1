@@ -1,0 +1,62 @@
+<script>
+   
+    class Student{
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+
+        setData(num, name, kor, math) {
+            this.num = num;
+            this.name = name;
+            this.kor = kor;
+            this.math = math;
+        };
+
+        printData(){
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br/>");
+        }
+    }
+
+    class StudentDAO{
+        studentList = [];
+        printStList(){
+            for(let i = 0; i < this.studentList.length; i++){
+                this.studentList[i].printData();
+            }
+        }
+
+        insertData(data){
+            this.studentList.push(data);
+        }
+
+        parseData(data) {
+            let parseList = [];
+            let token1 = data.split(",");
+
+            for(let i = 0; i < token1.length; i++){
+                let token2 = token1[i].split("/");
+
+                let temp = new Student();
+                let num = Number(token2[0]);
+                let name = (token2[1]);
+                let kor = Number(token2[2]);
+                let math = Number(token2[3]);
+                temp.setData(num, name, kor, math);
+                parseList.push(temp);
+            }
+            return parseList;
+        }
+    }
+
+    let strdata = "1001/김철수/100/20,1002/이영수/90/40,1003/오민수/20/50";
+    let studentDAO = new StudentDAO();
+
+    let parseList = studentDAO.parseData(strdata);
+    
+    for(let i = 0; i < parseList.length; i++){
+        studentDAO.insertData(parseList[i]);
+    }
+    studentDAO.printStList();
+
+</script>

@@ -1,0 +1,66 @@
+<script>
+
+    class Student{
+        num = 0;
+        name = "";
+        kor = 0;
+        math = 0;
+
+        setData(num, name, kor, math) {
+            this.num = num;
+            this.name = name;
+            this.kor = kor;
+            this.math = math;
+        };
+
+        printData(){
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br/>");
+        }
+    }
+
+    class StudentDAO{
+        static studentList = [];
+        
+        static printStList(){
+            for(let i = 0; i < this.studentList.length; i++){
+                this.studentList[i].printData();
+            }
+        }
+
+        static insertData(data){
+            this.studentList.push(data);
+        }
+
+        static parseData(data) {
+            let parseList = [];
+            let token1 = data.split(",");
+
+            for(let i = 0; i < token1.length; i++){
+                let token2 = token1[i].split("/");
+
+                let temp = new Student();
+                let num = Number(token2[0]);
+                let name = (token2[1]);
+                let kor = Number(token2[2]);
+                let math = Number(token2[3]);
+                temp.setData(num, name, kor, math);
+                parseList.push(temp);
+            }
+            return parseList;
+        }
+    }
+    /*
+        보통 DAO 클래스는 하나만필요하기때문에 보통 static 으로 사용한다.
+    */
+
+    let strdata = "1001/김철수/100/20,1002/이영수/90/40,1003/오민수/20/50";
+    // let studentDAO = new StudentDAO();
+
+    let parseList = StudentDAO.parseData(strdata); // new 하지않고도 사용가능하다.
+    
+    for(let i = 0; i < parseList.length; i++){
+        StudentDAO.insertData(parseList[i]);
+    }
+    StudentDAO.printStList();
+
+</script>

@@ -1,0 +1,34 @@
+<script>
+
+    class Monster {
+        static count = 0;
+
+        init() {
+            Monster.count += 1;
+            document.write("몬스터가 생성되었습니다.<br>");
+        }
+
+        die() {
+            Monster.count -= 1;
+
+            if(Monster.count > 0) {
+                document.write("현재 생존자 수는 " + Monster.count + "명 입니다.<br>");
+            } else {
+                document.write("몬스터가 전멸했습니다.<br>");
+            }
+        }
+    }
+    
+    let m1 = new Monster();
+    let m2 = new Monster();
+    let m3 = new Monster();
+
+    m1.init();
+    m2.init();
+    m3.init();
+
+    m3.die();
+
+    document.write(Monster.count);
+
+</script>

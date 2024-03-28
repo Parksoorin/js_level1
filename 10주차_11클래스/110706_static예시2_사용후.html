@@ -1,0 +1,163 @@
+<script>
+
+    /*
+        [문제] 
+			학생번호 , 이름 , 점수두개를 출력하시오. 
+			단, 이름 내림차순으로 정렬하시오.
+
+    */
+
+    class Student{
+        num = 0;
+        name = "";
+        gender = "";
+
+        setData(num, name, gender){
+            this.num =num;
+            this.name =name;
+            this.gender =gender;
+        }
+
+        printData(){
+            document.write(this.num + ", " + this.name + ", " + this.gender + "<br/>");
+        }
+    }
+
+    class Score{
+        num = 0;
+        kor = 0;
+        math = 0;
+
+        setData(num, kor, math){
+            this.num = num;
+            this.kor = kor;
+            this.math = math;
+        }
+        printData(){
+            document.write(this.num + ", " + this.kor + ", " + this.math + "<br/>");
+        }
+    }
+
+    class View{
+        num = 0;
+        name= "";
+        kor = 0;
+        math = 0;
+        setData(num, name, kor, math){
+            this.num = num;
+            this.name= name;
+            this.kor =kor;
+            this.math = math;
+        }
+        printData(){
+            document.write(this.num + ", " + this.name + ", " + this.kor + ", " + this.math + "<br/>");
+        }
+    }
+    
+    class StudentDAO{
+        static studentList = [];
+
+        static parseData(data){
+            let parseList = [];
+            let splitData = data.split(",");
+            for(let i = 0; i < splitData.length; i++){
+                let temp = splitData[i].split("/");
+                let st = new Student();
+                st.num = Number(temp[0]);
+                st.name = temp[1];
+                st.gender = temp[2];
+                parseList.push(st);
+            }
+            return parseList;
+        }
+        static insertData(data){
+            this.studentList.push(data);
+        }
+        static  printScoreList(){
+            for(let i = 0; i < this.studentList.length; i++){
+                this.studentList[i].printData();
+            }
+        }
+    }
+
+    class ScoreDAO{
+        static scoreList = [];
+        static parseData(data){
+            let parseList = [];
+            let splitData = data.split(",");
+            for(let i = 0; i < splitData.length; i++){
+                let temp = splitData[i].split("/");
+                let score = new Score();
+                score.num = Number(temp[0]);
+                score.kor = Number(temp[1]);
+                score.math = Number(temp[2]);
+                parseList.push(score);
+            }
+
+            return parseList;
+        }
+        static insertData(data){
+            this.scoreList.push(data);
+        }
+        static printScoreList(){
+            for(let i = 0; i < this.scoreList.length; i++){
+                this.scoreList[i].printData();
+            }
+        }
+    }
+    
+    class ViewDAO{
+        static viewList = [];
+
+        static insertData(){
+            // 위 의 주석된코드와 비교해보면 DAO를 넘겨받지않고 직접사용할수있다. 
+            let studentList = StudentDAO.studentList;
+            let scoreList = ScoreDAO.scoreList;
+            for(let i = 0; i < studentList.length; i++){
+                let view = new View();
+                view.num = studentList[i].num;
+                view.name = studentList[i].name;
+                view.kor = scoreList[i].kor;
+                view.math = scoreList[i].math;
+                this.viewList.push(view);
+                console.log("!!");
+            }
+        }
+
+        static sortViewList(){
+            this.viewList.sort((a , b)=>{
+                if(a.name < b.name){
+                    return 1;
+                }else if(a.name > b.name){
+                    return -1;
+                }else{
+                    return 0;
+                }
+            });
+        }
+
+        static printViewList(){
+            for(let i = 0; i < this.viewList.length; i++){
+                this.viewList[i].printData();
+            }
+        }
+    }
+
+    let studentStr = "1001/이만수/남,1002/이영희/여,1003/김민정/여,1004/이철민/남,1005/오만석/남,1006/최이슬/여";
+    let scoreStr = "1001/10/20,1002/70/20,1003/64/65,1004/13/87,1005/43/32,1006/43/78";
+
+    let parseList = StudentDAO.parseData(studentStr);
+    for(let i = 0; i < parseList.length; i++){
+        StudentDAO.insertData(parseList[i]);
+    }
+
+    let parseList2 = ScoreDAO.parseData(scoreStr);
+    
+    for(let i = 0; i < parseList.length; i++){
+        ScoreDAO.insertData(parseList2[i]);
+    }
+    //viewDAO.insertData(studentDAO , scoreDAO); 
+    ViewDAO.insertData(); // 위주석된코드와 비교하면 DAO 를 넘기지않아도된다. 
+    ViewDAO.printViewList();
+
+</script>

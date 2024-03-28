@@ -1,0 +1,25 @@
+<script>
+
+    /*
+        클래스 내부의 변수 종류
+
+        1. static 변수
+            (1) new 없이 바로 사용 가능하다.
+            (2) 클래스명.변수명
+
+        2. non-static 변수
+            (1) 반드시 new를 통해 객체생성 후 사용 가능하다.
+            (2) 객체명.변수명
+    */
+
+    class Hello {
+        static x = 10;
+        y = 20;
+    }
+
+    document.write("전역 변수 = " + Hello.x + "<br>");
+    
+    let h = new Hello();
+    document.write("인스턴스 변수 = " + h.y);
+
+</script>

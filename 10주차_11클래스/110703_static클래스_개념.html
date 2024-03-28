@@ -1,0 +1,15 @@
+<script>
+
+    class Hello {
+        static instance = new Hello();      
+    }
+
+    let h1 = new Hello();
+    let h2 = new Hello();
+    document.write(h1 == h2, "<br>");  // false
+    
+    let h3 = Hello.instance;
+    let h4 = Hello.instance;
+    document.write(h3 == h4, "<br>");  // true
+
+</script>

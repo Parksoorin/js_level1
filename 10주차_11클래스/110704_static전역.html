@@ -1,0 +1,25 @@
+<script>
+
+    /*
+        클래스 내부에 static을 붙이면 다른클래스에서 사용가능하다.
+        사용방법
+            [클래스명.스태틱변수] 로 사용한다.
+    */
+   
+    class TestStatic{
+        static testList = [1,2,3];
+    }
+
+    class Test{
+        printTestData(){
+            let testList = TestStatic.testList;
+            for(let i = 0; i < testList.length; i++){
+                document.write(testList[i]);
+            }
+        }
+    }
+ 
+    let test = new Test();
+    test.printTestData();
+  
+</script>
