@@ -1,0 +1,62 @@
+<script>
+
+    /*
+        [상속]
+            [1] 개념
+                서로 다른 클래스 두개는 상속이라는 키워드를 통해 
+                부모 자식 관계를 형성할 수 있다. 
+                이는 게임으로 설명하면 이해하기 쉽다. 
+
+                플레이어 라는 클래스가 있고, 
+                몬스터 늑대, 박쥐, 호랑이가 있다고 했을 때
+
+                플레이어와 몬스터 늑대 박쥐 호랑이는 각각 특성이 다르지만, 
+                체력, 공격력, 방어력, 레벨, 등등의 공통 데이터가 존재한다. 
+                또한 게임이기 때문에 공격하기, 공격 당하기, 사망 등의 기능도 
+                공통이다. 
+                
+                각 클래스마다 중복되는 데이터와 기능은  
+                상속으로 처리하면 코드가 간결해진다. 
+                
+            [2] 상속하는방법
+                자식 클래스 extends 부모클래스명 {}
+                [예시]
+                    class Player extends Unit{}    
+    */
+
+    class Unit {
+        health = 0;         // 체력
+        power = 0;          // 공격력
+        level = 0;          // 레벨
+        name = "";          // 이름
+        status = "play";    // play, dead (Unit의 상태를 나타냄)
+
+        setData(health, power, level, name) {
+            this.health = health;
+            this.power = power;
+            this.level = level;
+            this.name = name;
+        }
+
+        printData() {
+            document.write(`이름 = ${this.name}<br>
+            레벨 = ${this.level}<br>
+            체력 = ${this.health}<br>
+            공격력 = ${this.power}<br>`);
+        }
+    }
+    
+    class Player extends Unit {}
+    class Wolf extends Unit {}
+    class Bat extends Unit {}
+    class Tiger extends Unit {}
+
+    let player = new Player();
+    player.setData(100, 10, 1, "용사");
+    player.printData();
+
+    let wolf = new Wolf();
+    wolf.setData(40, 5, 1, "늑대");
+    wolf.printData();
+
+</script>

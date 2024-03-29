@@ -1,0 +1,173 @@
+<script>
+
+    class Unit {
+        health = 0;         // 체력
+        power = 0;          // 공격력
+        level = 0;          // 레벨
+        name = "";          // 이름
+        status = "play";    // play, dead (Unit의 상태를 나타냄)
+
+        setData(health, power, level, name) {
+            this.health = health;
+            this.power = power;
+            this.level = level;
+            this.name = name;
+        }
+
+        printData() {
+            document.write("이름 : " + this.name + "/ 레벨 : " + this.level + "/ 체력 : " +  this.health + "/ 파워 : " + this.power + "<br>");
+        }
+
+        attack(enemy) {
+            enemy.health -= this.power;
+            document.write(this.name + "이(가) " + enemy.name + "에게 " + this.power + "의 피해를 줍니다.<br>");
+        }
+
+        checkDead() {
+            let result = false;
+            if(this.health <= 0) {
+                this.health = 0;
+                this.status = "dead";
+                result = true;
+            } 
+            return result;
+        }
+        
+    }
+
+    class Player extends Unit {
+        skill1() {
+            this.health += 10;
+            if(this.health >= 50) {
+                this.health = 50;
+            }
+            document.write("회복마법 = 체력을 10 회복합니다.<br>");
+        }
+
+        skill2(monsterList) {
+            document.write("필살기 = 전체를 공격합니다.<br>");
+            for(let i=0; i<monsterList.length; i++) {
+                this.attack(monsterList[i]);
+            }
+        }
+    }
+
+    class Wolf extends Unit {}
+    class Bat extends Unit {}
+    class Tiger extends Unit {}
+
+    class RpgGame {
+        player = new Player();
+        monsterList = [];
+
+        gameSetting() {
+            this.player.setData(50, 10, 4, "용사");
+
+            for(let i=0; i<3; i++) {
+                let r = Math.floor(Math.random() * 3);
+                if(r == 0) {
+                    let wolf = new Wolf();
+                    wolf.setData(15, 2, 1, "늑대");
+                    this.monsterList.push(wolf);
+                } else if(r == 1) {
+                    let bat = new Bat();
+                    bat.setData(20, 3, 2, "박쥐");
+                    this.monsterList.push(bat);
+                } else if(r == 2) {
+                    let tiger = new Tiger();
+                    tiger.setData(30, 4, 4, "호랑이");
+                    this.monsterList.push(tiger);
+                }
+            }
+            this.gameInfo();
+        }
+
+        gameInfo() {
+            document.write("======== [유닛 정보 시작] ========<br>");
+            this.player.printData();
+
+            for(let i=0; i<this.monsterList.length; i++) {
+                this.monsterList[i].printData();
+            }
+            document.write("======== [유닛 정보 종료] ========<br>");
+        }
+
+        monsterDeadCount() {
+            while(true) {
+                let check = false;
+                for(let i=0; i<this.monsterList.length; i++) {
+                    if(this.monsterList[i].checkDead()) {
+                        document.write(this.monsterList[i].name + " 사망합니다.<br>");
+                        this.monsterList.splice(i, 1);
+                        check = true;
+                        break;
+                    }
+                }
+                if(check == false) {
+                    break;
+                }
+            }
+        }
+
+        playerTurn() {
+            let index = Math.floor(Math.random() * this.monsterList.length);
+            let monster = this.monsterList[index];
+
+            let skill = Math.floor(Math.random() * 3);
+            if(skill == 0) {
+                this.player.attack(monster);
+            } else if(skill == 1) {
+                this.player.skill1();
+            } else if(skill == 2) {
+                this.player.skill2(this.monsterList);
+            }
+
+            this.monsterDeadCount();
+
+            if(this.monsterList.length == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        monsterTurn() {
+            for(let i=0; i<this.monsterList.length; i++) {
+                this.monsterList[i].attack(this.player);
+            }
+            if(this.player.checkDead()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        gamePlay() {
+            let turn = 1;
+            while(true) {
+                document.write("=========[ " + turn + " 턴 시작 ]==========<br>");
+                if(turn % 2 == 1) {
+                    if(this.playerTurn()) {
+                        document.write("게임에서 승리했습니다.<br>");
+                        break;
+                    }
+                } else {
+                    if(this.monsterTurn()) {
+                        document.write("플레이어가 사망했습니다.<br>GAME OVER<br>");
+                        break;
+                    }
+                }
+                document.write("=========[ " + turn + " 턴 종료 ]==========<br>");
+                this.gameInfo();
+                turn += 1;
+            }
+        }
+    }
+
+    //--------------------------------------------------------------
+
+    let rpgGame = new RpgGame();
+    rpgGame.gameSetting();
+    rpgGame.gamePlay();
+
+</script>
