@@ -1,0 +1,39 @@
+<script>
+
+    /*
+        [문제]
+            [1] 1~50 사이의 랜덤 숫자에서 3의 배수 3개의 합을 total배열에 추가한다. 
+            [2] 위 내용을 총 다섯번 반복한다. 
+        [예시]
+            36 18 39  : 93
+            21 27 15  : 63
+            24 9 42  : 75
+            21 3 39  : 63
+            24 6 18  : 48
+
+            total = 93, 63, 75, 63, 48
+    */
+
+    let total = [];
+
+    for(let i = 0; i < 5; i++){
+        let temp = [];
+        let cnt = 0;
+        while(true){
+            let r = parseInt(Math.random()*50) + 1;
+            if(r % 3 == 0){
+                temp.push(r);
+                cnt++;
+                if(cnt == 3){
+                    break;
+                }
+            } 
+        }
+        let sum = temp[0] + temp[1] + temp[2];
+        document.write(temp[0], " ", temp[1], " ", temp[2], " : ", sum, "<br>");
+        total.push(sum);
+    }
+
+    document.write("<br> total = ", total);
+
+</script>

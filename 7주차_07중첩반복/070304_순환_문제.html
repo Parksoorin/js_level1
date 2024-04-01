@@ -1,0 +1,33 @@
+<script>
+
+    /*
+        [문제]
+            랜덤(1~5)숫자 하나를 저장하고 그 숫자만큼 arr배열을 순환시키시오.
+            순환이란, 모든 값을 뒤로 밀고 맨 뒤의 값은 맨 앞으로 오는 것을 의미한다.
+        [예시]
+            arr = [10,20,30,40,50]
+            r = 3
+            랜덤이 3이 나왔으므로, 아래와 같이 세번 순환을 한다.
+            
+            arr = [50,10,20,30,40]
+            arr = [40,50,10,20,30]
+            arr = [30,40,50,10,20]    
+    */
+
+    let arr = [10, 20, 30, 40, 50];
+
+    let r = parseInt(Math.random()*5)+1;
+    document.write("r = ", r, "<br>");
+
+    for(let i = 0; i < r; i++){
+        let index = arr.length - 1;
+        let temp = arr[index];
+        for(let j = index; j > 0; j--){
+            arr[j] = arr[j - 1];
+        }
+        arr[0] = temp;
+
+        document.write("arr = ", arr, "<br>");
+    }
+
+</script>
