@@ -1,0 +1,46 @@
+<script>
+
+    /*
+        [문제]
+            [1] 1~50 사이의 랜덤 숫자 중 3의 배수 3개의 합을 total에 추가한다. 
+            [2] 위 내용을 총 다섯 번 반복한다. 
+            [3] 합이 가장 큰 수를 변수 max에 저장하시오.
+        [예시]
+            27 27 18 = 72
+            30 24 15 = 69 
+            6 12 45 = 63  
+            45 27 48 = 120
+            30 18 27 = 75 
+            
+            max = 120    
+    */
+
+    let total = [];
+
+    for(let i = 0; i < 5; i++){
+        let temp = [];
+        let cnt = 0;
+        while(true){
+            let r = parseInt(Math.random()*50) + 1;
+            if(r % 3 == 0){
+                temp.push(r);
+                cnt++;
+                if(cnt == 3){
+                    break;
+                }
+            }
+        }
+        let sum = temp[0] + temp[1] + temp[2];
+        total.push(sum);
+        document.write(temp[0], " ", temp[1], " ", temp[2], " : ", sum, "<br>");
+    }
+
+    let max = 0;
+    for(let i = 0; i < total.length; i++){
+        if(max < total[i]){
+            max = total[i];
+        }
+    }
+    document.write("max = ", max);
+
+</script>

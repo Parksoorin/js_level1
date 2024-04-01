@@ -1,0 +1,40 @@
+<script>
+
+    /*
+        [문제]
+            [1] arr배열에 1~10까지의 랜덤 숫자 3개를 저장 후 출력하시오.
+            [2] 단, 숫자 3개는 서로 중복되면 안 된다. 
+            [3] 숫자 3개의 합은 반드시 20이어야 한다. 
+        [예시]
+            [3, 10, 7] o 
+            [5, 10, 5] x 
+    */
+
+    let arr = [0, 0, 0];
+    let x = 0;
+
+    while(true){
+        let r = parseInt(Math.random()*10) + 1;
+        let cnt = 0;
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] == r){
+                cnt++;
+            }
+        }
+        if(cnt == 0){
+            arr[x] = r;
+            x++;
+            if(x == 3){
+                if(arr[0] + arr[1] + arr[2] == 20){
+                    break;
+                } else {
+                    arr = [0, 0, 0];
+                    x = 0;
+                }
+            }
+        }
+    }
+
+    document.write(arr);
+
+</script>
