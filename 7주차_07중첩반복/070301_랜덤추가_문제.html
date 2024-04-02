@@ -1,0 +1,33 @@
+<script>
+
+    /*
+        [문제]
+            arr배열은 이미 1~3의 값이 저장되어 있다.
+            이제 추가로 랜덤(1~10)을 10회 반복하여 추가하려 한다. 
+            단, 중복숫자가 있으면 저장하지 않는다.
+        [예시1]
+            1, 2, 3, 10, 8, 9, 4
+        [예시2]
+            1, 2, 3, 9, 5, 4, 8, 10, 6
+        [예시3]
+            1, 2, 3, 6, 4, 8
+    */
+
+    let arr = [1, 2, 3];
+
+    for(let i = 0; i < 10; i++){
+        let ran = parseInt(Math.random()*10) + 1;
+        let cnt = 0;
+        for(let j = 0; j < arr.length; j++){
+            if(ran == arr[j]){
+                cnt++;
+            }
+        }
+        if(cnt == 0){
+            arr.push(ran);
+        }
+    }
+
+    document.write(arr);
+
+</script>

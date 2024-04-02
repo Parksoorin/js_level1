@@ -1,0 +1,114 @@
+<script>
+
+    /*
+        [문제]
+            아래와 같이 출력하시오.    
+    */
+
+    /*
+        [문제1]
+            11112
+            11122
+            11222
+            12222    
+    */
+
+    let cnt = 4;
+    for(let i = 0; i < 4; i++){
+        for(let j = 0; j < 5; j++){
+            if(j < cnt){
+                document.write("1");
+            } else {
+                document.write("2");
+            }
+        }
+        document.write("<br>");
+        cnt--;
+    }
+    document.write("<br><hr><br>");
+
+    /*
+        [문제2]
+            12222
+            11222
+            11122
+            11112   
+    */ 
+
+    let cnt2 = 1;
+    for(let i = 0; i < 4; i++){
+        for(let j = 0; j < 5; j++){
+            if(j < cnt2){
+                document.write("1");
+            } else {
+                document.write("2");
+            }
+        }
+        document.write("<br>");
+        cnt2++;
+    }
+    document.write("<br><hr><br>");
+   
+    /*
+        [문제3]
+            11211
+            12221	
+            22222
+    */  
+
+    let k = 1;
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < 2 - i; j++){
+            document.write("1");
+        }
+        for(let j = 0; j < k; j++){
+            document.write("2");
+        }
+        for(let j = 0; j < 2 - i; j++){
+            document.write("1");
+        }
+        document.write("<br>");
+        k += 2;
+    }
+    document.write("<br><hr><br>");
+
+    /*
+        [문제4]
+              2
+             222
+            22222
+    */  
+
+    let k2 = 1;
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < 2 - i; j++){
+            document.write("&nbsp;");
+        }
+        for(let j = 0; j < k2; j++){
+            document.write("2");
+        }
+        document.write("<br>");
+        k2 += 2;
+    }
+    document.write("<br><hr><br>");
+
+    /*
+        [문제5]
+            22222
+             222
+              2 
+    */     
+   
+    let k3 = 5;
+    for(let i = 0; i < 3; i++){
+        for(let j = 0; j < i; j++){
+            document.write("&nbsp;");
+        }
+        for(let j = 0; j < k3; j++){
+            document.write("2");
+        }
+        document.write("<br>");
+        k3 -= 2;
+    }
+
+</script>

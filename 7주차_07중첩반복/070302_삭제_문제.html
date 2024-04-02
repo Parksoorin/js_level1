@@ -1,0 +1,43 @@
+<script>
+
+    /*
+        [문제]
+            arr배열에는 1~5의 값이 추가되어 있다. 
+            랜덤(1~10) 숫자를 10번 발생시켜
+            랜덤 값이 arr배열 안에 있으면 arr배열에서 삭제하고,
+            없으면 "삭제불가" 를 출력한다.
+        [예시] 
+            r = 9 : 삭제불가
+            r = 9 : 삭제불가
+            r = 8 : 삭제불가
+            r = 3 : [1, 2, 4, 5]
+            r = 6 : 삭제불가
+            r = 6 : 삭제불가
+            r = 8 : 삭제불가
+            r = 5 : [1, 2, 4]
+            r = 1 : [2, 4]
+            r = 6 : 삭제불가    
+    */
+
+    let arr = [1, 2, 3, 4, 5];
+
+    for(let i = 0; i < 10; i ++){
+        let ran = parseInt(Math.random()*10)+1;
+        document.write("r = ", ran, " : ")
+        let cnt = 0;
+        let index = 0;
+        for(let j = 0; j < arr.length; j++){
+            if(ran == arr[j]){
+                cnt++;
+                index = j;
+            }
+        }
+        if(cnt == 1){
+            arr.splice(index, 1);
+            document.write(arr, "<br>")
+        } else {
+            document.write("삭제 불가", "<br>");
+        }
+    }
+
+</script>
