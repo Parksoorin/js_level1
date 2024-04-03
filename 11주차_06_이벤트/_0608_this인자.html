@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oninput</title>
+</head>
+<body>
+
+    <h3 id="result" onclick="changeRange('red')">클릭하면 글자 색상이 바뀝니다.</h3>
+    <h3 id="test" onclick="changeColor(this, 'blue')">클릭하면 글자 색상이 바뀝니다.</h3>
+    
+    <script>
+        // let element = document.getElementById("main");
+        // element.addEventListener("click", changeback);
+
+        function changeRange(value) {
+            document.querySelector("#result").style.color = value;
+        }
+
+        // this를 인자로 전달하면, querySelector를 통해 태그를 선택할 필요가 없다.
+        function changeColor(element, color) {
+            // element = document.querySelector("#test");
+            element.style.color = color;
+        }
+
+        
+        
+    </script>
+
+</body>
+</html>
