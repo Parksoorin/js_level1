@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sub {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>간식 종류</h1>
+    </div>
+    <div>
+        <table border="1">
+            <tr>
+                <td rowspan="5">
+                    <img src="images/snack1.jpg" id="main" width="200px" height="200px">
+                </td>
+                <td>상품명 : 삼립 미니꿀약과</td>
+            </tr>
+            <tr>
+                <td>판매가 : 20,000원</td>
+            </tr>
+            <tr>
+                <td>배송비 : 3,000원</td>
+            </tr>
+            <tr>
+                <td>수량 : <input type="number" value="1" min="1" max="5"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="장바구니 담기"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="images/snack1.jpg" class="sub" >
+                    <img src="images/snack2.jpg" class="sub" >
+                    <img src="images/snack3.jpg" class="sub" >
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        // 메인 상품 이미지 가져오기
+        let mainImg = document.querySelector("#main");
+        // 작은 상품 이미지 가져오기
+        let subImgs = document.querySelectorAll(".sub");
+
+        // 이벤트 적용하기
+        for(let i=0; i<subImgs.length; i++) {
+            subImgs[i].addEventListener("click", changeImg);
+        }
+
+        function changeImg(){
+            let changeImg = this.src;
+            mainImg.src = changeImg;
+        }
+    </script>
+</body>
+</html>
