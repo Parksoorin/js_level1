@@ -8,6 +8,7 @@ import { PageMemberLogin } from "./pageMemberLogin.js";
 export class ControllerMain {
 
     static pageList = {};
+    
     // (1) main.js에서 전달받아 ControllerMain.js의 start 함수 실행
     static start() {
         // (2) setPageList()의 값들을 가져온다. 
