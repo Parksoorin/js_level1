@@ -31,12 +31,12 @@ export class PageHeader {
 
         $buttonMemberJoinPage.addEventListener("click", this.buttonMemberJoinPageClick);
         $buttonMemberLoginPage.addEventListener("click", this.buttonMemberLoginPageClick);
-
-        
     }
+
     buttonMemberJoinPageClick = (event) => {
-
+        ControllerMain.changePage("page-memberJoin");
     }
+    
     buttonMemberLoginPageClick = (event) => {
         ControllerMain.changePage("page-memberLogin");
     }
