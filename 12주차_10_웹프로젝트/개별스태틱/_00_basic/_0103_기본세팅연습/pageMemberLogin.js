@@ -1,4 +1,10 @@
+import { MemberDAO } from "./_memberDAO.js";
+
 export class PageMemberLogin {
+    $inputMemberId = null;
+    $inputMemberPw = null;
+    $buttonMemberLoginPro = null;
+
     execute() {
         let $content = document.querySelector("#content");
         let tag = "";
@@ -33,5 +39,23 @@ export class PageMemberLogin {
         `;
 
         $content.innerHTML = tag;
+
+        // 로그인 버튼 클릭 시 buttonMemberLoginClick() 함수 실행
+        this.$inputMemberId = document.querySelector("#input-memberId");
+        this.$inputMemberPw = document.querySelector("#input-memberPw");
+        this.$buttonMemberLoginPro = document.querySelector("#button-memberLoginPro");
+        this.$buttonMemberLoginPro.addEventListener("click", this.buttonMemberLoginProClick);
+    }
+
+    buttonMemberLoginProClick = (event) => {
+        let memberId = this.$inputMemberId.value;
+        let memberPw = this.$inputMemberPw.value;
+
+        let check = MemberDAO.memberLogin(memberId, memberPw);
+        if(check) {
+            alert("로그인 성공");
+        } else {
+            alert("로그인 실패");
+        }
     }
 }
