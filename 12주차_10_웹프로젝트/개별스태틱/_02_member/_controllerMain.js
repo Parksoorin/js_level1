@@ -10,7 +10,6 @@ export class ControllerMain {
     static log = null;
     static pageList = {};
     static start() {
-
         this.setPageList();
         this.changePage("page-header", null);
         this.changePage("page-index", null);

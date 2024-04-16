@@ -5,7 +5,6 @@ export class MemberDAO {
     static memberList = [];
 
     static start() {
-
         this.setSampleData();  
     }
 
