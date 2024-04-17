@@ -219,7 +219,32 @@
         */
 
         function selDelClick(){
+            let $checkAll = document.querySelector("#checkAll");
+            let $cartTable = document.querySelector("#cartTable");
             
+            while(true){
+                let $itemCheckList = document.querySelectorAll(".itemCheck");
+
+                let check = false;
+                for(let i = 0; i < $itemCheckList.length; i++){
+                    if($itemCheckList[i].checked){
+                        $cartTable.children[0].children[i+1].remove();
+                        check = true;
+                        break;
+                    }
+                }
+
+                if(check == false){
+                    break;
+                }
+            }
+
+            checkItemCount();
+            checkedItemCount();
+
+            if(checkedItemCount() == 0) {
+                $checkAll.checked = false;
+            }
         }
         
     </script>
