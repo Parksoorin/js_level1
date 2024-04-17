@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 연습</title>
+    <style>
+        table, tr, td  {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+        #content-join {
+            margin: 0 auto;
+            width: 600px;
+        }
+        #title, #joinPro {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <table id="content-join">
+        <tr>
+            <td colspan="3" id="title"><h2>회원가입</h2></td>
+        </tr>
+        <tr>
+            <td>아이디</td>
+            <td><input type="text" value="qwer1234"></td>
+            <td><button>중복확인</button></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td>
+            <td colspan="2"><input type="text" value="Qwer1234!"></td>
+        </tr>
+        <tr>
+            <td>비밀번호확인</td>
+            <td colspan="2"><input type="text" value="Qwer1234!"></td>
+        </tr>
+        <tr>
+            <td>이름</td>
+            <td colspan="2"><input type="text" value="홍길동"></td>
+
+        </tr>
+        <tr>
+            <td>이메일</td>
+            <td><input type="text" value="qwer@naver.com"></td>
+            <td><button>중복확인</button></td>
+        </tr>
+        <tr>
+            <td>휴대폰</td>
+            <td colspan="2"><input type="text" value="01012345678"></td>
+        </tr>
+        <tr>
+            <td>우편번호</td>
+            <td><input type="text" value="02830"></td>
+            <td><button>우편번호 검색</button></td>
+        </tr>
+        <tr>
+            <td>도로명 주소</td>
+            <td colspan="2"><input type="text" value="서울 성북구 아리랑로 3"></td>
+        </tr>
+        <tr>
+            <td>남은 주소</td>
+            <td colspan="2"><input type="text" value="남은주소"></td>
+        </tr>
+        <tr>
+            <td>성별</td>
+            <td colspan="2">
+                <input type="radio" value="1">남자
+                <input type="radio" value="2">여자
+                <input type="radio" value="0" checked>선택안함
+            </td>
+        </tr>
+        <tr>
+            <td>유입경로</td>
+            <td colspan="2">
+                <select>
+                    <option value="1">인터넷 검색</option>
+                    <option value="2">지인 권유</option>
+                    <option value="3">SNS</option>
+                    <option value="4">광고</option>
+                    <option value="0" selected>기타</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="2">이용약관동의</td>
+            <td colspan="2">
+                <input type="checkbox">전체동의
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="checkbox">이용약관 동의 (필수)<br>
+                <input type="checkbox">개인정보취급 동의 (필수)<br>
+                <input type="checkbox">만 14세 이상입니다. (필수)<br>
+                <input type="checkbox">마케팅 메일 수신 동의 (선택)<br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" id="joinPro">
+                <button>가입하기</button>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
