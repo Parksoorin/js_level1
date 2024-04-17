@@ -236,7 +236,7 @@ export class PageMemberJoin {
             this.$inputMemberId.value = "";
             this.$inputMemberId.focus();
         } else {
-            let result = JsonMemember.getInstance().memberIdCheckPro(this.$inputMemberId.value);
+            let result = MemberDAO.memberIdCheckPro(this.$inputMemberId.value);
             if(result == false) {
                 this.idCheck = true;
                 this.$inputMemberPw.focus();
@@ -310,7 +310,7 @@ export class PageMemberJoin {
             this.emailCheck = true;
 
             /* 기능 구현하기 */
-            let check = JsonMemember.getInstance().memberEmailCheckPro(this.$inputMemberEmail.value);
+            let check = MemberDAO.memberEmailCheckPro(this.$inputMemberEmail.value);
             if(check == false) {
                 this.$inputMemberPhone.focus();
                 alert("사용 가능한 이메일입니다.");
