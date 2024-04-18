@@ -67,6 +67,7 @@ export class PageHeader {
         if(ControllerMain.log == null){
             document.querySelector("#btn-indexPage").addEventListener("click", this.indexPageClick);
             document.querySelector("#btn-memberJoinPage").addEventListener("click", this.memberJoinPageClick);
+            document.querySelector("#btn-memberLoginPage").addEventListener("click", this.memberLoginPageClick);
         }
 
     }
@@ -80,5 +81,10 @@ export class PageHeader {
     // header의 회원가입 버튼 클릭 시 
     memberJoinPageClick = (event) => {
         ControllerMain.changePage("page-memberJoin", null);
+    }
+
+    // header의 로그인 버튼 클릭 시 
+    memberLoginPageClick = (event) => {
+        ControllerMain.changePage("page-memberLogin", null);
     }
 }

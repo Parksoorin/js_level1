@@ -1,6 +1,13 @@
+import { MemberDAO } from "./_memberDAO.js";
 import { ControllerMain } from "./_controllerMain.js";
 
 export class PageMemberJoin {
+    idCheck = false;
+    emailCheck = false;
+
+    $inputMemberId = null;
+    $buttonMemberIdCheckPro = null;
+
     execute(data) {
         let $content = document.querySelector("#content");  
 
