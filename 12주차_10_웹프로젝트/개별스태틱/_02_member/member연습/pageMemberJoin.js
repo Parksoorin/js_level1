@@ -7,6 +7,23 @@ export class PageMemberJoin {
 
     $inputMemberId = null;
     $buttonMemberIdCheckPro = null;
+    $inputMemberPw = null;
+    $inputMemberPwRe = null;
+    $inputMemberName = null;
+    $inputMemberEmail = null;
+    $buttonMemberEmailCheckPro = null;
+    $inputMemberPhone = null;
+    
+    $inputMemberZonecode = null;
+    $inputMemberAddress = null;
+    $inputMemberAddressDetail = null;
+    $buttonDaumPostAPI = null;
+
+    $radioMemberGender = null;
+    $selectMemberRoute = null;
+    $checkMemberAllTerms = null;
+    $checkMemberTerms = null;
+    $btnMemberJoinPro = null;
 
     execute(data) {
         let $content = document.querySelector("#content");  
@@ -141,6 +158,140 @@ export class PageMemberJoin {
 
         $content.innerHTML = tag;
 
+        this.idCheck = false;
+        this.emailCheck = false;
+
+        // 회원가입 아이디 인풋(아직 구현 x)
+        this.$inputMemberId = document.querySelector("#input-memberId");
+        this.$inputMemberId.addEventListener("input", this.inputMemberIdInput);
+
+        // 회원가입 아이디 중복확인 버튼
+        this.$buttonMemberIdCheckPro = document.querySelector("#button-memberIdCheckPro");
+        this.$buttonMemberIdCheckPro.addEventListener("click", this.buttonMemberIdCheckProClick);
+    
+            
+        // 비밀번호 인풋 
+        this.$inputMemberPw = document.querySelector("#input-memberPw");
+        this.$inputMemberPw.addEventListener("input", this.inputMemberPwInput);
+
+        // 비밀번호 재확인
+        this.$inputMemberPwRe = document.querySelector("#input-memberPwRe");
+        this.$inputMemberPwRe.addEventListener("input", this.inputMemberPwReInput);
+
+        // 이름 확인
+        this.$inputMemberName = document.querySelector("#input-memberName");
+        this.$inputMemberName.addEventListener("input", this.inputMemberNameInput);
+
+        // 이메일 인풋
+        this.$inputMemberEmail = document.querySelector("#input-memberEmail");
+        this.$inputMemberEmail.addEventListener("input", this.inputMemberEmailInput);
+    
+    
+        // 이메일 중복 버튼
+        this.$buttonMemberEmailCheckPro = document.querySelector("#button-memberEmailCheckPro");
+        this.$buttonMemberEmailCheckPro.addEventListener("click", this.buttonMemberEmailCheckProClick);
+    
+        // 전화번호 인풋
+        this.$inputMemberPhone = document.querySelector("#input-memberPhone");
+        this.$inputMemberPhone.addEventListener("input", this.inputMemberPhoneInput);
+
+    }
+
+    // 회원가입 아이디 인풋
+    inputMemberIdInput = (event) => {
         
     }
+
+    // 아이디 중복확인 버튼 클릭
+    buttonMemberIdCheckProClick = (event) => {
+        let regExp = RegExp(/^[A-Za-z0-9_\-]{6,16}$/);
+
+        if(this.$inputMemberId.value == ""){
+            alert("아이디를 입력해주세요.");
+            this.$inputMemberId.focus();
+        } else if(!regExp.test(this.$inputMemberId.value)){
+            alert("6자 이상 16자 이하의 영문 혹은 영문과 숫자를 조합하여 만들어주세요.");
+            this.$inputMemberId.value = "";
+            this.$inputMemberId.focus();
+        } else {
+            let check = MemberDAO.memberIdCheckPro(this.$inputMemberId.value);
+            if(check == false){
+                this.idCheck = true;
+                alert("사용할 수 있는 아이디 입니다.");
+            } else {
+                this.$inputMemberId.value = "";
+                this.$inputMemberId.focus();
+                alert("사용할 수 없는 아이디 입니다.");
+            }
+        }
+    }
+
+    // 비밀번호 확인
+    inputMemberPwInput = (event) => {
+        let $msgMemberPw = document.querySelector("#msg-memberPw");
+        let regExp = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+        if(regExp.test(this.$inputMemberPw.value)){
+            $msgMemberPw.innerHTML = "";
+        } else {
+            $msgMemberPw.innerHTML = "<span style='color:#F03F40; font-size:12px;'>영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자 조합</span>";
+        }
+    }
+
+    // 비밀번호 재확인
+    inputMemberPwReInput = (event) => {
+        let $memberPwRe = document.querySelector("#msg-memberPwRe");
+        if(this.$inputMemberPw != this.$inputMemberPwRe){
+            $memberPwRe.innerHTML = "<span style='color:#F03F40; font-size:12px;'>동일한 비밀번호를 입력하세요.</span>";
+        }
+    }
+
+    // 이름 확인
+    inputMemberNameInput = (event) => {
+        let $msgmemberName = document.querySelector("#msg-memberName");
+        let regExp = RegExp(/^[가-힣]{2,6}$/);
+        if(!regExp.test(this.$inputMemberName.value)){
+            $msgmemberName.innerHTML = "<span style='color:#F03F40; font-size:12px;'>2~6글자의 한글만 입력하세요.</span>"
+        }
+    }
+
+    // 이메일 인풋
+    inputMemberEmailInput = (event) => {
+        let $msgMemberEmail = document.querySelector("#msg-memberEmail");
+        let regExp = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+
+        if(!regExp.test(this.$inputMemberEmail.value)){
+            $msgMemberEmail.innerHTML = "<span style='color:#F03F40; font-size:12px;'>이메일 형식으로 입력해 주세요.</span>";
+        }
+    }
+
+    // 이메일 중복 버튼
+    buttonMemberEmailCheckProClick = (event) => {
+        let regExp = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+
+        if(this.$inputMemberEmail.value == ""){
+            alert("이메일을 입력해주세요.");
+            this.$inputMemberEmail.focus();
+        } else if(!regExp.test(this.$inputMemberEmail.value)){
+            alert("이메일 형식으로 입력해 주세요.");
+            this.$inputMemberEmail.value = "";
+            this.$inputMemberEmail.focus();
+        } else {
+            let check = MemberDAO.memberEmailCheckPro(this.$inputMemberEmail.value);
+            if(check == false){
+                this.emailCheck = true;
+                alert("사용이 가능한 이메일입니다.");
+            } else {
+                alert("사용이 불가능한 이메일입니다.");
+                this.$inputMemberEmail.value = "";
+                this.$inputMemberEmail.focus();
+            }
+        }
+    }
+
+    // 전화번호 인풋
+    inputMemberPhoneInput = (event) => {
+
+    }
+
+
 }

@@ -55,4 +55,28 @@ export class MemberDAO {
         ];  
     }
 
+    // 아이디 중복 검사
+    static memberIdCheckPro(memberId) {
+        let check = false;
+        for(let i = 0; i < this.memberList.length; i++){
+            if(this.memberList[i].memberId == memberId){
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
+    // 이메일 중복 검사
+    static memberEmailCheckPro(memberEmail) {
+        let check = false;
+        for(let i = 0; i < this.memberList.length; i++){
+            if(this.memberList[i].memberEmail == memberEmail){
+                check = true;
+                break;
+            }
+        }
+        return check;
+    }
+
 }
