@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #game{
+            width: 100%;
+        }
+        #game .layout{
+            margin: 0 auto;
+            text-align: center;
+        }
+        #game .title{
+            padding: 10px 0px;
+        }
+       
+        .menu{
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game">
+        <div class="layout">
+            <div class="title">
+                <h1>오목</h1>
+            </div>
+            <canvas id="myCanvas" width="550" height="550" style="border: 1px solid black;"></canvas>   
+            <div class="menu">
+                <button id="gridCheck">그리드 확인</button>
+                <button id="reset">리셋</button>        
+            </div>
+            <div class="testText"></div>
+        </div>
+    </div>
+    
+    <script src="omok.js"></script>
+</body>
+</html>
+
+<!--
+    참고사이트
+    https://developer.mozilla.org/ko/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+-->
