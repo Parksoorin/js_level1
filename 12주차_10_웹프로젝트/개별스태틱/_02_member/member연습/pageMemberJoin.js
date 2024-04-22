@@ -370,7 +370,110 @@ export class PageMemberJoin {
 
     // 회원가입 버튼 클릭
     buttonMemberJoinProClick = (event) => {
+        // 아이디 입력 확인
+        if(this.$inputMemberId.value == "") {
+            this.$inputMemberId.focus();
+            alert("아이디를 입력해주세요.");
+            return false;
+        }
+        // 아이디 중복확인
+        if(this.idCheck == false) {
+            alert("아이디를 중복확인을 해주세요.");
+            return false;
+        }
+        // 비밀번호 입력 확인
+        if(this.$inputMemberPw.value == "") {
+            alert("비밀번호를 입력해주세요.");
+            return false;
+        }
+        // 비밀번호확인 입력 확인
+        if(this.$inputMemberPwRe.value == "") {
+            alert("비밀번호 확인을 입력해주세요.");
+            return false;
+        }
+        // 이름 입력 확인
+        if(this.$inputMemberName.value == "") {
+            alert("이름을 입력해주세요.");
+            return false;
+        }
+        // 이메일 입력 확인
+        if(this.$inputMemberEmail.value == "") {
+            alert("이메일을 입력하세요.");
+            return false;
+        }
+        // 이메일 중복확인
+        if(this.emailCheck == false) {
+            alert("이메일 중복 확인를 해주세요.");
+            return false;
+        }
+        // 휴대폰 입력 확인
+        if(this.$inputMemberPhone.value == "") {
+            alert("휴대폰 번호를 입력해주세요.");
+            return false;
+        }
+        // 우편번호 입력 확인
+        if(this.$inputMemberZonecode.value == "") {
+            alert("우편번호를 입력해주세요.");
+            return false;
+        }
+        // 도로명 입력 확인
+        if(this.$inputMemberAddress.value == "") {
+            alert("도로명을 입력해주세요.");
+            return false;
+        }
+        // 남은 주소 입력 확인
+        if(this.$inputMemberAddressDetail.value == "") {
+            alert("남은 주소를 입력해주세요.");
+            return false;
+        }
+
+        // 이용약관 동의 필수항목 선택 확인
+        let checkResult = true;
+        for(let i=0; i<this.$checkMemberTerms.length - 1; i++) {
+            if(!this.$checkMemberTerms[i].checked) {
+                checkResult = false;
+                break;
+            }
+        }
+        if(checkResult == false) {
+            alert("필수 약관에 동의해주세요.");
+            return false;
+        } 
         
+        let maxMemberNo = MemberDAO.getMaxMemberNo();
+
+        let radioMemberGender = "";
+        for(let i=0; i<this.$radioMemberGender.length; i++) {
+            if(this.$radioMemberGender[i].checked) {
+                radioMemberGender = this.$radioMemberGender[i].value;
+            }
+        }
+
+        let checkMemberTerms = false;
+        if(this.$checkMemberTerms[3].checked) {
+            checkMemberTerms = true;
+        }
+
+        let member = {
+            "memberNo"       : maxMemberNo + 1, 
+            "memberId"       : this.$inputMemberId.value, 
+            "memberPw"       : this.$inputMemberPw.value, 
+            "memberName"     : this.$inputMemberName.value, 
+            "memberEmail"    : this.$inputMemberEmail.value,
+            "memberPhone"    : this.$inputMemberPhone.value,
+            "memberZonecode"  : this.$inputMemberZonecode.value,
+            "memberAddress" : this.$inputMemberAddress.value,
+            "memberAddressDetail" : this.$inputMemberAddressDetail.value,
+            "memberGender"   : radioMemberGender,
+            "memberRoute"    : this.$selectMemberRoute.value,
+            "memberTerms"    : checkMemberTerms,
+        };
+
+        MemberDAO.addMember(member);
+
+        // 이동하기
+        alert("회원가입을 축하합니다.");
+        ControllerMain.changePage("page-index", null);
     }
 
 }

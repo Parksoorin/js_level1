@@ -79,4 +79,24 @@ export class MemberDAO {
         return check;
     }
 
+    // 회원가입 완료 시
+    static addMember(member){
+        this.memberList.push(member);
+    }
+
+    static getMemberList() {
+        return this.memberList;
+    }
+
+    // 멤버 넘버가 가장 큰 값 가져오기
+    static getMaxMemberNo() {
+        let maxMemberNo = 0;
+        for(let i = 0; i < this.memberList.length; i++){
+            if(this.memberList[i].memberNo > maxMemberNo){
+                maxMemberNo = this.memberList[i].memberNo;
+            }
+        }
+        return maxMemberNo;
+    }
+
 }
