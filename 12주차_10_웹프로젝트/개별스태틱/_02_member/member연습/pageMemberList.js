@@ -1,7 +1,7 @@
 import { MemberDAO } from "./_memberDAO.js";
 
 export class PageMemberList {
-    excute(data) {
+    execute(data) {
         let $content = document.querySelector("#content");
 
         let tag = "";
@@ -43,6 +43,30 @@ export class PageMemberList {
                
         `;
 
-        
+        let genderList = ["선택안함", "남자", "여자"];
+        let routeList = ["기타", "인터넷 검색", "지인 권유", "SNS", "광고"];
+        let memberList = MemberDAO.getMemberList();
+        for(let i = 0; i < memberList.length; i++){
+            tag += 
+            `
+            <tr>
+                <td>${memberList[i].memberNo}</td>                
+                <td>${memberList[i].memberId}</td>                
+                <td>${memberList[i].memberPw}</td>                
+                <td>${memberList[i].memberName}</td>                
+                <td>${memberList[i].memberEmail}</td>                
+                <td>${memberList[i].memberPhone}</td>                
+                <td>${memberList[i].memberZonecode}</td>                
+                <td>${memberList[i].memberAddress}</td>                
+                <td>${memberList[i].memberAddressDetail}</td>   
+                <td>${genderList[memberList[i].memberGender]}</td>   
+                <td>${routeList[memberList[i].memberRoute]}</td>   
+                <td>${memberList[i].memberTerms}</td> 
+            </tr>
+            `;
+        }
+        tag += `</table> `;
+
+        $content.innerHTML = tag;
     }
 }

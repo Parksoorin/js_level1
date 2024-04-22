@@ -83,10 +83,6 @@ export class MemberDAO {
         this.memberList.push(member);
     }
 
-    static getMemberList() {
-        return this.memberList;
-    }
-
     // 멤버 넘버가 가장 큰 값 가져오기
     static getMaxMemberNo() {
         let maxMemberNo = 0;
@@ -108,6 +104,11 @@ export class MemberDAO {
             }
         }
         return result;
+    }
+
+    // 멤버리스트 페이지
+    static getMemberList() {
+        return this.memberList;
     }
 
 }
