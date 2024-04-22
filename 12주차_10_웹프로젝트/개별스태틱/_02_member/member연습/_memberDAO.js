@@ -1,4 +1,3 @@
-
 // Json클래스는 싱글톤 패턴
 export class MemberDAO {
 
@@ -97,6 +96,18 @@ export class MemberDAO {
             }
         }
         return maxMemberNo;
+    }
+
+    // 로그인 버튼 클릭 시 
+    static loginMember(memberId, memberPw) {
+        let result = false;
+        for(let i = 0; i < this.memberList.length; i++){
+            if(this.memberList[i].memberId == memberId && this.memberList[i].memberPw == memberPw){
+                result = true;
+                break;
+            }
+        }
+        return result;
     }
 
 }

@@ -68,8 +68,12 @@ export class PageHeader {
             document.querySelector("#btn-indexPage").addEventListener("click", this.indexPageClick);
             document.querySelector("#btn-memberJoinPage").addEventListener("click", this.memberJoinPageClick);
             document.querySelector("#btn-memberLoginPage").addEventListener("click", this.memberLoginPageClick);
+        } else {
+            document.querySelector("#btn-indexPage").addEventListener("click", this.indexPageClick);
+            document.querySelector("#btn-memberListPage").addEventListener("click", this.memberListPageClick);
+            document.querySelector("#btn-memberLogoutPro").addEventListener("click", this.memberLogoutProClick);
+            document.querySelector("#btn-boardListPage").addEventListener("click", this.boardListPageClick);
         }
-
     }
 
 
@@ -86,5 +90,19 @@ export class PageHeader {
     // header의 로그인 버튼 클릭 시 
     memberLoginPageClick = (event) => {
         ControllerMain.changePage("page-memberLogin", null);
+    }
+
+    // 멤버리스트 클릭 시 
+    memberListPageClick = (event) => {
+        ControllerMain.changePage("page-memberList", null);
+    }
+
+    // 로그아웃 버튼 클릭 시 
+    memberLogoutProClick = (event) => {
+        alert("로그아웃 되었습니다.");
+
+        ControllerMain.log = null;
+        ControllerMain.changePage("page-header", null);
+        ControllerMain.changePage("page-index", null);
     }
 }

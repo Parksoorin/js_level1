@@ -2,6 +2,7 @@ import { PageHeader } from "./pageHeader.js";
 import { PageIndex } from "./pageIndex.js";
 import { PageMemberJoin } from "./pageMemberJoin.js";
 import { PageMemberLogin } from "./pageMemberLogin.js";
+import { PageMemberList } from "./pageMemberList.js";
 
 export class ControllerMain{
     static log = null;
@@ -18,6 +19,7 @@ export class ControllerMain{
         this.pageList["page-index"] = new PageIndex();
         this.pageList["page-memberJoin"] = new PageMemberJoin();
         this.pageList["page-memberLogin"] = new PageMemberLogin();
+        this.pageList["page-memberList"] = new PageMemberList();
     }
 
     static changePage(pageName, data){

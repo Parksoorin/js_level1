@@ -1,6 +1,13 @@
-export class PageMemberLogin {
-    execute(data) {
+import { MemberDAO } from "./_memberDAO.js";
+import { ControllerMain } from "./_controllerMain.js";
 
+export class PageMemberLogin {
+
+    $inputMemberId = null;
+    $inputMemberPw = null;
+    $buttonMemberLoginPro = null;
+
+    execute(data) {
         let $content = document.querySelector("#content");
 
         let tag = "";
@@ -44,5 +51,38 @@ export class PageMemberLogin {
         `;
 
         $content.innerHTML = tag;
+
+        // 아이디, 비밀번호 인풋
+        this.$inputMemberId = document.querySelector("#input-memberId");
+        this.$inputMemberPw = document.querySelector("#input-memberPw");
+       
+        // 로그인 버튼 클릭
+        this.$buttonMemberLoginPro = document.querySelector("#button-memberLoginPro");
+        this.$buttonMemberLoginPro.addEventListener("click", this.memberLoginPro);
+    }
+
+    memberLoginPro = (event) => {
+        if(this.$inputMemberId.value == ""){
+            alert("아이디를 입력해주세요.");
+            this.$inputMemberId.focus();
+            return false;
+        }
+        if(this.$inputMemberPw.value == "") {
+            alert("비밀번호를 입력해주세요.");
+            this.$inputMemberPw.focus();
+            return false;
+        }
+        
+        let result = MemberDAO.loginMember(this.$inputMemberId.value, this.$inputMemberPw.value);
+        if(result){
+            ControllerMain.log = this.$inputMemberId.value;
+            ControllerMain.changePage("page-header", null);
+            ControllerMain.changePage("page-index", null);
+        } else {
+            alert("아이디와 비밀번호를 확인해주세요.");
+            this.$inputMemberId.value = "";
+            this.$inputMemberPw.value = "";
+            this.$inputMemberId.focus();
+        }
     }
 }
