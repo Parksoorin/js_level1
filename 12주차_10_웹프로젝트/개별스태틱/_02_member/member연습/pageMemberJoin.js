@@ -195,6 +195,38 @@ export class PageMemberJoin {
         this.$inputMemberPhone = document.querySelector("#input-memberPhone");
         this.$inputMemberPhone.addEventListener("input", this.inputMemberPhoneInput);
 
+        // 우편번호 인풋
+        this.$inputMemberZonecode = document.querySelector("#input-memberZonecode");
+
+        // 우편번호 검색 버튼
+        this.$buttonDaumPostAPI = document.querySelector("#button-daumPostAPI");
+        this.$buttonDaumPostAPI.addEventListener("click", this.execDaumPostcode);
+
+        // 주소 인풋(도로명 주소)
+        this.$inputMemberAddress = document.querySelector("#input-memberAddress");
+
+        // 주소 인풋(남은 주소)
+        this.$inputMemberAddressDetail = document.querySelector("#input-memberAddressDetail");
+
+        // 성별 라디오버튼
+        this.$radioMemberGender = document.querySelectorAll(".radio-memberGender");
+
+        // 유입 경로 셀렉트
+        this.$selectMemberRoute = document.querySelector("#select-memberRoute");
+
+        // 약관동의 전체 선택
+        this.$checkMemberAllTerms = document.querySelector("#check-memberAllTerms");
+        this.$checkMemberAllTerms.addEventListener("click", this.checkMemberAllTermsClick);
+
+        // 약관 동의 개별 선택
+        this.$checkMemberTerms = document.querySelectorAll(".check-memberTerms");
+        for(let i=0; i<this.$checkMemberTerms.length; i++) {
+            this.$checkMemberTerms[i].addEventListener("click", this.checkMemberTermsClick);
+        }
+
+        // 회원가입 버튼
+        this.$btnMemberJoinPro = document.querySelector("#button-memberJoinPro");
+        this.$btnMemberJoinPro.addEventListener("click", this.buttonMemberJoinProClick);
     }
 
     // 회원가입 아이디 인풋
@@ -290,8 +322,55 @@ export class PageMemberJoin {
 
     // 전화번호 인풋
     inputMemberPhoneInput = (event) => {
-
+        let $msgMemberPhone = document.querySelector("#msg-memberPhone");
+        let regExp = RegExp(/^01([0|1|6|7|8|9])([0-9]{3,4})([0-9]{4})$/);
+        if(!regExp.test($msgMemberPhone.value)){
+            $msgMemberPhone.innerHTML = "<span style='color:#F03F40; font-size:12px;'>휴대폰 형식으로 입력해 주세요.</span>";
+        }
     }
 
+    // 우편번호 검색
+    execDaumPostcode = (event) => {
+        new daum.Postcode( {
+            oncomplete: function(data) {
+                document.querySelector("#input-memberZonecode").value = data.zonecode;
+                document.querySelector("#input-memberAddress").value = data.address;
+                document.querySelector("#input-memberAddressDetail").focus();
+            }
+        } ).open();
+    }
+
+    // 약관동의 전체 선택
+    checkMemberAllTermsClick = (event) => {
+        if(this.$checkMemberAllTerms.checked){
+            for(let i = 0; i < this.$checkMemberTerms.length; i++){
+                this.$checkMemberTerms[i].checked = true;
+            } 
+        }else {
+            for(let i = 0; i < this.$checkMemberTerms.length; i++){
+                this.$checkMemberTerms[i].checked = false;
+            }
+        }
+    }
+
+    // 약관 동의 개별 클릭
+    checkMemberTermsClick = (event) => {
+        let count = 0;
+        for(let i=0; i<this.$checkMemberTerms.length; i++) {
+            if(this.$checkMemberTerms[i].checked) {
+                count += 1;
+            }
+        }
+        if(count == this.$checkMemberTerms.length) {
+            this.$checkMemberAllTerms.checked = true;
+        } else {
+            this.$checkMemberAllTerms.checked = false;
+        }
+    }
+
+    // 회원가입 버튼 클릭
+    buttonMemberJoinProClick = (event) => {
+        
+    }
 
 }
