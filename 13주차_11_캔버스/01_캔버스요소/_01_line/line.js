@@ -13,7 +13,9 @@ function drawLine(){
         [4] 닫기 
         ctx.closePath();
     */
-   
+
+
+    // beginPath와 closePath는 무조건 들어간다. 
     ctx.beginPath();
 
     ctx.moveTo(100, 75);  // 시작점
@@ -29,8 +31,6 @@ function drawLine(){
     ctx.stroke();         // 그리기
 
     ctx.closePath();
-
-
 }
 
 //-------------------------------------------------

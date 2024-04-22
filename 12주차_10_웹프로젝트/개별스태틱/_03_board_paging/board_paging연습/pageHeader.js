@@ -57,6 +57,9 @@ export class PageHeader {
                     <td>
                         <button id="btn-boardListPage">게시판</button>
                     </td>
+                    <td>
+                        <button id="btn-boardListPaging">게시판 페이징</button>
+                    </td>
                 </tr>
             </table>
             `;
@@ -104,5 +107,10 @@ export class PageHeader {
         ControllerMain.log = null;
         ControllerMain.changePage("page-header", null);
         ControllerMain.changePage("page-index", null);
+    }
+
+    // 게시판 클릭 시 
+    boardListPageClick = (event) => {
+        ControllerMain.changePage("page-boardList", null);
     }
 }

@@ -5,11 +5,13 @@ function drawArc(){
     */
     console.log(Math.PI);
     ctx.beginPath();
+    // 2*Math.PI = 원
     ctx.arc(100, 100, 50, 0, 2*Math.PI);
     ctx.stroke();
     ctx.closePath();
 
     ctx.beginPath();
+    // Math.PI = 반원
     ctx.arc(300, 300, 30, 0 , Math.PI);
     ctx.fillStyle="red"
     ctx.fill();
