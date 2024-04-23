@@ -17,9 +17,9 @@ console.log("캔버스 상단 여백 = " + ctx.canvas.offsetTop);
 let x = 0;
 let y = 0;
 let radius = 40;
-let angle = Math.PI * 2;
+let angle = Math.PI * 2;  // 6.28 원
 
-
+// event는 마우스를 의미
 window.addEventListener('click', (event) => {
     //캔버스의 시작위치는  모니터의 시작위치와 다르다. 
     //그간격만큼 조정한다. 
