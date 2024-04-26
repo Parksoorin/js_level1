@@ -4,6 +4,7 @@ import { PageMemberJoin } from "./pageMemberJoin.js";
 import { PageMemberLogin } from "./pageMemberLogin.js";
 import { PageMemberList } from "./pageMemberList.js";
 import { PageBoardList } from "./pageBoardList.js";
+import { PageBoardInfo } from "./pageBoardInfo.js";
 
 export class ControllerMain{
     static log = null;
@@ -24,6 +25,8 @@ export class ControllerMain{
 
         // 게시판 메인
         this.pageList["page-boardList"] = new PageBoardList();
+        // 게시글 제목 클릭 시
+        this.pageList["page-boardInfo"] = new PageBoardInfo();
     }
 
     static changePage(pageName, data){

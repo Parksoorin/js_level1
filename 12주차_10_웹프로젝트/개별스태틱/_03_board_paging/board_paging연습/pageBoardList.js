@@ -115,10 +115,20 @@ export class PageBoardList {
         for(let i=0; i<this.$buttonBoardDeletePro.length; i++) {
             this.$buttonBoardDeletePro[i].addEventListener("click", this.boardDeleteProClick);
         }
+
+        
     }
 
     // 게시글 제목 클릭
     boardInfoPageClick = (event) =>  {
+        let index = 0;
+        for(let i = 0; i < this.$atagBoardInfoPage.length; i++){
+            if(event.target == this.$atagBoardInfoPage[i]){
+                index = i;
+                break;
+            }
+        }
+        ControllerMain.changePage("page-boardInfo", this.$boardNo[index].innerText);
     }
 
     // 전체선택 체크박스 클릭

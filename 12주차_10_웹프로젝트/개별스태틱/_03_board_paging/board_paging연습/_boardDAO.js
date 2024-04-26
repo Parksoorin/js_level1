@@ -49,6 +49,18 @@ export class BoardDAO {
         return this.boardList;
     }
 
+    // 게시글 제목 클릭 시 넘어가는 페이지에 게시글에 대한 정보를 넘겨준다. 
+    static getBoard(boardNo) {
+        let index = 0;
+        for(let i=0; i<this.boardList.length; i++) {
+            if(this.boardList[i].boardNo == boardNo) {
+                index = i;
+                break;
+            }
+        } 
+        return this.boardList[index];
+    }
+
     // 게시판 글 삭제 시
     static deleteBoard(boardNo){
         let index = 0;
