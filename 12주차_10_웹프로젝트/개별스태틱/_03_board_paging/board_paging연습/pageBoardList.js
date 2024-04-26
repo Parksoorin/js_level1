@@ -95,10 +95,56 @@ export class PageBoardList {
         for(let i=0; i<this.$atagBoardInfoPage.length; i++) {
             this.$atagBoardInfoPage[i].addEventListener("click", this.boardInfoPageClick);
         }
+
+        // 전체선택 체크박스 클릭
+        this.$checkboxAll = document.querySelector("#checkbox-all");
+        this.$checkboxAll.addEventListener("click", this.checkboxAllClick);
+
+        // 체크박스 개별 클릭
+        this.$checkboxBoard = document.querySelectorAll(".checkbox-board");
+        for(let i=0; i<this.$checkboxBoard.length; i++) {
+            this.$checkboxBoard[i].addEventListener("click", this.checkboxBoardClick);
+        }
+
+        // 선택 삭제 버튼 클릭
+        this.$buttonCheckBoardDeletePro = document.querySelector("#button-checkBoardDeletePro");
+        this.$buttonCheckBoardDeletePro.addEventListener("click", this.buttonCheckBoardDeleteProClick);
     }
 
+    // 게시글 제목 클릭
     boardInfoPageClick = (event) =>  {
-        
+    }
 
+    // 전체선택 체크박스 클릭
+    checkboxAllClick = (event) => {
+        if(this.$checkboxAll.checked == true){
+            for(let i = 0; i < this.$checkboxBoard.length; i++){
+                this.$checkboxBoard[i].checked = true;
+            }
+        } else {
+            for(let i = 0; i < this.$checkboxBoard.length; i++){
+                this.$checkboxBoard[i].checked = false;
+            }
+        }
+    }
+
+    // 체크박스 개별 클릭
+    checkboxBoardClick = (event) => {
+        let cnt = 0;
+        for(let i = 0; i < this.$checkboxBoard.length; i++){
+            if(this.$checkboxBoard[i].checked){
+                cnt++;
+            }
+        }
+        if(cnt == this.$checkboxBoard.length){
+            this.$checkboxAll.checked = true;
+        } else {
+            this.$checkboxAll.checked = false;
+        }
+    }
+
+    // 선택 삭제 버튼 클릭
+    buttonCheckBoardDeleteProClick = (event) => {
+        
     }
 }
