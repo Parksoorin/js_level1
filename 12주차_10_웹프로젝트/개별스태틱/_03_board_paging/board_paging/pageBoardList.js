@@ -156,8 +156,6 @@ export class PageBoardList {
                 break;
             }
         }
-        
-
         BoardDAO.deleteBoard(this.$boardNo[index].innerText);
         ControllerMain.changePage("page-boardList", null);
     }

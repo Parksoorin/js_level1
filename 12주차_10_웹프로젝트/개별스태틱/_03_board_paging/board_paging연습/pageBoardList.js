@@ -109,6 +109,12 @@ export class PageBoardList {
         // 선택 삭제 버튼 클릭
         this.$buttonCheckBoardDeletePro = document.querySelector("#button-checkBoardDeletePro");
         this.$buttonCheckBoardDeletePro.addEventListener("click", this.buttonCheckBoardDeleteProClick);
+
+        // 게시글 삭제 버튼 클릭
+        this.$buttonBoardDeletePro = document.querySelectorAll(".button-boardDeletePro");
+        for(let i=0; i<this.$buttonBoardDeletePro.length; i++) {
+            this.$buttonBoardDeletePro[i].addEventListener("click", this.boardDeleteProClick);
+        }
     }
 
     // 게시글 제목 클릭
@@ -143,8 +149,29 @@ export class PageBoardList {
         }
     }
 
+    // 게시글 삭제 버튼 클릭
+    boardDeleteProClick = (event) => {
+        let index = 0;
+        for(let i = 0; i < this.$buttonBoardDeletePro.length; i++){
+            if(this.$buttonBoardDeletePro[i] == event.target){
+                index = i;
+                break;
+            }
+        }
+        BoardDAO.deleteBoard(this.$boardNo[index].innerHTML);
+        ControllerMain.changePage("page-boardList", null);
+    }
+    
+
     // 선택 삭제 버튼 클릭
     buttonCheckBoardDeleteProClick = (event) => {
-        
+        let deleteList = [];
+        for(let i = 0; i < this.$checkboxBoard.length; i++){
+            if(this.$checkboxBoard[i].checked){
+                deleteList.push(Number(this.$boardNo[i].innerHTML));
+            }
+        }
+        BoardDAO.checkBoardDeletePro(deleteList);
+        ControllerMain.changePage("page-boardList", null);
     }
 }
