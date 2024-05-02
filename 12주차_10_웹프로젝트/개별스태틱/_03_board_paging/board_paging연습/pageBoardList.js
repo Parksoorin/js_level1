@@ -171,8 +171,8 @@ export class PageBoardList {
     // 게시글 삭제 버튼 클릭
     boardDeleteProClick = (event) => {
         let index = 0;
-        for(let i = 0; i < this.$buttonBoardDeletePro.length; i++){
-            if(this.$buttonBoardDeletePro[i] == event.target){
+        for(let i = 0; i < this.$buttonBoardModifyPro.length; i++){
+            if(this.$buttonBoardModifyPro[i] == event.target){
                 index = i;
                 break;
             }
@@ -208,6 +208,7 @@ export class PageBoardList {
 
     // 더미파일 추가 버튼 클릭
     buttonBoardDummyAddProClick = (event) => {
-        
+        BoardDAO.setBoardDummyAdd();
+        ControllerMain.changePage("page-boardList", null);
     }
 }

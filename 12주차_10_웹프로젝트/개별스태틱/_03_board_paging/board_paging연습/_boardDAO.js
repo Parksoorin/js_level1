@@ -96,9 +96,43 @@ export class BoardDAO {
         this.boardList[index].content = boardContent;
     }
 
+    // 게시글 넘버가 가장 큰 값 반환
+    static getMaxBoardNo() {
+        let maxBoardNo = 1000;
+        for(let i=0; i<this.boardList.length; i++) {
+            if(maxBoardNo < this.boardList[i].boardNo) {
+                maxBoardNo = this.boardList[i].boardNo;
+            }
+        }
+        return maxBoardNo;
+    }
+
     // 더미 파일 추가 버튼 클릭 시 더미파일 추가
     static setBoardDummyAdd() {
-        
+        let date = new Date();
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        if(month < 10) {
+            month = "0" + month;
+        }
+        let day = date.getDate();
+        let today = year + "-" + month + "-" + day;
+
+        for(let i = 0; i < 10; i++){
+            let maxboardNo = this.getMaxBoardNo() + 1;
+            let dummyBoard = {
+                "boardNo"   : maxboardNo,
+                "title"     : "제목" + maxboardNo,
+                "content"   : "내용" + maxboardNo,
+                "writer"    : "작성자" + maxboardNo,
+                "regDate"   : today,
+                "readCount" : 0,
+                "ref"       : 1,
+                "reStep"    : 1,
+                "reLevel"   : 1
+            };
+            this.boardList.push(dummyBoard);
+        }
 
     }
 }

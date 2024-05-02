@@ -166,7 +166,6 @@ export class BoardDAO {
     }
 
     static checkBoardDeletePro(deleteList) {
-
         for(let i=0; i<deleteList.length; i++) {
             for(let j=0; j<this.boardList.length; j++) {
                 if(this.boardList[j].boardNo == deleteList[i]) {
@@ -174,8 +173,6 @@ export class BoardDAO {
                 }
             }
         }
-
-
     }
 
 }
