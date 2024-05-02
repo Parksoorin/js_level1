@@ -116,7 +116,16 @@ export class PageBoardList {
             this.$buttonBoardDeletePro[i].addEventListener("click", this.boardDeleteProClick);
         }
 
-        
+        // 수정 버튼 클릭
+        this.$buttonBoardModifyPro = document.querySelectorAll(".button-boardModifyPro");
+        for(let i=0; i<this.$buttonBoardModifyPro.length; i++) {
+            this.$buttonBoardModifyPro[i].addEventListener("click", this.boardModifyPageClick);
+        }
+
+        // 더미파일 추가 버튼 클릭
+        this.$buttonBoardDummyAddPro = document.querySelector("#button-boardDummyAddPro");
+        this.$buttonBoardDummyAddPro.addEventListener("click", this.buttonBoardDummyAddProClick);
+
     }
 
     // 게시글 제목 클릭
@@ -183,5 +192,22 @@ export class PageBoardList {
         }
         BoardDAO.checkBoardDeletePro(deleteList);
         ControllerMain.changePage("page-boardList", null);
+    }
+
+    // 수정 버튼 클릭
+    boardModifyPageClick = (event) => {
+        let index = 0;
+        for(let i = 0; i < this.$buttonBoardModifyPro.length; i++){
+            if(this.$buttonBoardModifyPro[i] == event.target){
+                index = i;
+                break;
+            }
+        }
+        ControllerMain.changePage("page-boardModify", this.$boardNo[index].innerHTML);
+    }
+
+    // 더미파일 추가 버튼 클릭
+    buttonBoardDummyAddProClick = (event) => {
+        
     }
 }

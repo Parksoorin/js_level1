@@ -82,4 +82,23 @@ export class BoardDAO {
             }
         }
     }
+
+    // 게시글 수정 버튼 클릭 시(수정 완료 시)
+    static modifyBoard(boardNo, boardTitle, boardContent) {
+        let index = 0;
+        for(let i=0; i<this.boardList.length; i++) {
+            if(this.boardList[i].boardNo == boardNo) {
+                index = i;
+                break;
+            }
+        } 
+        this.boardList[index].title = boardTitle;
+        this.boardList[index].content = boardContent;
+    }
+
+    // 더미 파일 추가 버튼 클릭 시 더미파일 추가
+    static setBoardDummyAdd() {
+        
+
+    }
 }
