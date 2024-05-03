@@ -126,6 +126,9 @@ export class PageBoardList {
         this.$buttonBoardDummyAddPro = document.querySelector("#button-boardDummyAddPro");
         this.$buttonBoardDummyAddPro.addEventListener("click", this.buttonBoardDummyAddProClick);
 
+        // 새 글 작성 버튼 클릭 
+        this.$buttonBoardWritePage = document.querySelector("#button-boardWritePage");
+        this.$buttonBoardWritePage.addEventListener("click", this.boardWritePageClick);
     }
 
     // 게시글 제목 클릭
@@ -211,4 +214,10 @@ export class PageBoardList {
         BoardDAO.setBoardDummyAdd();
         ControllerMain.changePage("page-boardList", null);
     }
+
+    // 새 글 작성 버튼 클릭 
+    boardWritePageClick = (event) => {
+        
+    }
+
 }
